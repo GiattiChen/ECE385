@@ -1,0 +1,21 @@
+
+State Machine - |lab5_toplevel|control:control_unit|curr_state
+Name curr_state.J curr_state.I1 curr_state.I0 curr_state.H1 curr_state.H0 curr_state.G1 curr_state.G0 curr_state.F1 curr_state.F0 curr_state.E1 curr_state.E0 curr_state.D1 curr_state.D0 curr_state.C1 curr_state.C0 curr_state.B1 curr_state.B0 curr_state.A 
+curr_state.A 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+curr_state.B0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+curr_state.B1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+curr_state.C0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+curr_state.C1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+curr_state.D0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+curr_state.D1 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+curr_state.E0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+curr_state.E1 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+curr_state.F0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+curr_state.F1 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+curr_state.G0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.G1 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.H0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.H1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.I0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.I1 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+curr_state.J 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 

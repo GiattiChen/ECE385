@@ -1,0 +1,125 @@
+|lab3_control_unit
+SA0 <= 7402:inst14.1
+SHIFT <= 7410:inst11.1
+C0 <= 7474:inst2.1Q
+CLK => 7474:inst2.1CLK
+CLK => 7474:inst.1CLK
+CLK => 7474:inst.2CLK
+C1 <= 7474:inst.2Q
+high => 7474:inst2.1PRN
+high => 7474:inst2.1CLRN
+high => 7474:inst.2PRN
+high => 7474:inst.1PRN
+high => 7474:inst.2CLRN
+high => 7474:inst.1CLRN
+EXECUTE => 7427:inst7.2
+EXECUTE => 7400:inst8.2
+LOAD_A => 7402:inst1.3
+LOAD_A => SA1.DATAIN
+SA1 <= LOAD_A.DB_MAX_OUTPUT_PORT_TYPE
+SB0 <= 7402:inst15.1
+LOAD_B => 7402:inst4.3
+LOAD_B => SB1.DATAIN
+SB1 <= LOAD_B.DB_MAX_OUTPUT_PORT_TYPE
+Q <= 7474:inst.1Q
+low => ~NO_FANOUT~
+
+
+|lab3_control_unit|7402:inst14
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|lab3_control_unit|7402:inst1
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|lab3_control_unit|7410:inst11
+1 <= 5.DB_MAX_OUTPUT_PORT_TYPE
+4 => 5.IN0
+3 => 5.IN1
+2 => 5.IN2
+
+
+|lab3_control_unit|7400:inst8
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|lab3_control_unit|7474:inst
+1Q <= 9.DB_MAX_OUTPUT_PORT_TYPE
+1CLRN => 9.ACLR
+1CLK => 9.CLK
+1D => 9.DATAIN
+1PRN => 9.PRESET
+1QN <= 16.DB_MAX_OUTPUT_PORT_TYPE
+2Q <= 10.DB_MAX_OUTPUT_PORT_TYPE
+2CLRN => 10.ACLR
+2CLK => 10.CLK
+2D => 10.DATAIN
+2PRN => 10.PRESET
+2QN <= 15.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab3_control_unit|7486:inst6
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|lab3_control_unit|7474:inst2
+1Q <= 9.DB_MAX_OUTPUT_PORT_TYPE
+1CLRN => 9.ACLR
+1CLK => 9.CLK
+1D => 9.DATAIN
+1PRN => 9.PRESET
+1QN <= 16.DB_MAX_OUTPUT_PORT_TYPE
+2Q <= 10.DB_MAX_OUTPUT_PORT_TYPE
+2CLRN => 10.ACLR
+2CLK => 10.CLK
+2D => 10.DATAIN
+2PRN => 10.PRESET
+2QN <= 15.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|lab3_control_unit|7400:inst10
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|lab3_control_unit|7400:inst9
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|lab3_control_unit|7402:inst5
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|lab3_control_unit|7427:inst7
+1 <= 5.DB_MAX_OUTPUT_PORT_TYPE
+4 => 5.IN0
+3 => 5.IN1
+2 => 5.IN2
+
+
+|lab3_control_unit|7402:inst15
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|lab3_control_unit|7402:inst4
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+

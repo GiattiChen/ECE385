@@ -1,0 +1,287 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/ECE385_Project_Files/Lab5/simulation/modelsim
+vadder_subtractor
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 !s110 1585223173
+!i10b 1
+!s100 N8[Umgf[2ReV=D^YGP42f1
+I0Y_0WPWS>DKO]<=BRR6G43
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+Z4 !s105 Adder_subtractor_sv_unit
+S1
+R0
+Z5 w1585209658
+Z6 8C:/ECE385_Project_Files/Lab5/Adder_subtractor.sv
+Z7 FC:/ECE385_Project_Files/Lab5/Adder_subtractor.sv
+L0 1
+Z8 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z9 !s108 1585223173.000000
+Z10 !s107 C:/ECE385_Project_Files/Lab5/Adder_subtractor.sv|
+Z11 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ECE385_Project_Files/Lab5|C:/ECE385_Project_Files/Lab5/Adder_subtractor.sv|
+!i113 1
+Z12 o-sv -work work
+Z13 !s92 -sv -work work +incdir+C:/ECE385_Project_Files/Lab5
+Z14 tCvgOpt 0
+vcontrol
+R1
+Z15 !s110 1585223172
+!i10b 1
+!s100 AO@jUZf_GTU7Gea>AY2ln1
+IYLl0GiOjP`A9h@3Y@R`L82
+R3
+!s105 Control_sv_unit
+S1
+R0
+w1585222561
+8C:/ECE385_Project_Files/Lab5/Control.sv
+FC:/ECE385_Project_Files/Lab5/Control.sv
+L0 1
+R8
+r1
+!s85 0
+31
+Z16 !s108 1585223172.000000
+!s107 C:/ECE385_Project_Files/Lab5/Control.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ECE385_Project_Files/Lab5|C:/ECE385_Project_Files/Lab5/Control.sv|
+!i113 1
+R12
+R13
+R14
+vDreg
+R1
+R2
+!i10b 1
+!s100 04]z952O=TDi4_^7cfm?A1
+Ik1KoY?dZEF@PeAjf3>iZ]1
+R3
+!s105 Dreg_sv_unit
+S1
+R0
+w1585160200
+8C:/ECE385_Project_Files/Lab5/Dreg.sv
+FC:/ECE385_Project_Files/Lab5/Dreg.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/ECE385_Project_Files/Lab5/Dreg.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ECE385_Project_Files/Lab5|C:/ECE385_Project_Files/Lab5/Dreg.sv|
+!i113 1
+R12
+R13
+R14
+n@dreg
+vfull_adder
+R1
+R2
+!i10b 1
+!s100 5R=Zc[JNH4jhQ_4E3JMll0
+I]75=M<W9dAzfV;NG;GH@13
+R3
+R4
+S1
+R0
+R5
+R6
+R7
+L0 26
+R8
+r1
+!s85 0
+31
+R9
+R10
+R11
+!i113 1
+R12
+R13
+R14
+vHexDriver
+R1
+R15
+!i10b 1
+!s100 ^DddjRd7Wla]U<SlP;mT@0
+IGMb0DGXGO5c5[XAE;D[0j3
+R3
+!s105 HexDriver_sv_unit
+S1
+R0
+w1472632912
+8C:/ECE385_Project_Files/Lab5/HexDriver.sv
+FC:/ECE385_Project_Files/Lab5/HexDriver.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R16
+!s107 C:/ECE385_Project_Files/Lab5/HexDriver.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ECE385_Project_Files/Lab5|C:/ECE385_Project_Files/Lab5/HexDriver.sv|
+!i113 1
+R12
+R13
+R14
+n@hex@driver
+vlab5_toplevel
+R1
+Z17 !s110 1585223174
+!i10b 1
+!s100 goO]8F1Jc?9dMY<[MHcjc0
+IA]?SE;=^iPoFB9Mi:SJ2n2
+R3
+!s105 lab5_toplevel_sv_unit
+S1
+R0
+w1585218103
+8C:/ECE385_Project_Files/Lab5/lab5_toplevel.sv
+FC:/ECE385_Project_Files/Lab5/lab5_toplevel.sv
+L0 1
+R8
+r1
+!s85 0
+31
+R9
+!s107 C:/ECE385_Project_Files/Lab5/lab5_toplevel.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ECE385_Project_Files/Lab5|C:/ECE385_Project_Files/Lab5/lab5_toplevel.sv|
+!i113 1
+R12
+R13
+R14
+vreg_8
+R1
+R15
+!i10b 1
+!s100 <c5inm=G237STD@SXjGVg0
+IU3Q585J_T6SCb4YeBXF[13
+R3
+!s105 Reg_8_sv_unit
+S1
+R0
+w1584603729
+8C:/ECE385_Project_Files/Lab5/Reg_8.sv
+FC:/ECE385_Project_Files/Lab5/Reg_8.sv
+L0 25
+R8
+r1
+!s85 0
+31
+R16
+!s107 C:/ECE385_Project_Files/Lab5/Reg_8.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ECE385_Project_Files/Lab5|C:/ECE385_Project_Files/Lab5/Reg_8.sv|
+!i113 1
+R12
+R13
+R14
+vsync
+R1
+R15
+!i10b 1
+!s100 2W5Vz0:F6ckE2`eJOTK5l1
+IJjP9cDMa0kK[RbSG3M9mK1
+R3
+Z18 !s105 Synchronizers_sv_unit
+S1
+R0
+Z19 w1473596184
+Z20 8C:/ECE385_Project_Files/Lab5/Synchronizers.sv
+Z21 FC:/ECE385_Project_Files/Lab5/Synchronizers.sv
+L0 4
+R8
+r1
+!s85 0
+31
+R16
+Z22 !s107 C:/ECE385_Project_Files/Lab5/Synchronizers.sv|
+Z23 !s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ECE385_Project_Files/Lab5|C:/ECE385_Project_Files/Lab5/Synchronizers.sv|
+!i113 1
+R12
+R13
+R14
+vsync_r0
+R1
+R15
+!i10b 1
+!s100 IGd9f_F;JNjVBLQ@DAnD10
+IzgZW4<Cg1WKi``JOiWo4O0
+R3
+R18
+S1
+R0
+R19
+R20
+R21
+L0 18
+R8
+r1
+!s85 0
+31
+R16
+R22
+R23
+!i113 1
+R12
+R13
+R14
+vsync_r1
+R1
+R15
+!i10b 1
+!s100 1CXiH1DYDbAUS69Ee2j060
+I1mZ7d=lARTQ0R2N6U]cgV3
+R3
+R18
+S1
+R0
+R19
+R20
+R21
+L0 39
+R8
+r1
+!s85 0
+31
+R16
+R22
+R23
+!i113 1
+R12
+R13
+R14
+vtestbench
+R1
+R17
+!i10b 1
+!s100 MW_e]>Dfd<kWGXoE2@4h12
+I[6kP6X1EK]PBI[KB<6?;j3
+R3
+!s105 testbench_sv_unit
+S1
+R0
+w1585217896
+8C:/ECE385_Project_Files/Lab5/testbench.sv
+FC:/ECE385_Project_Files/Lab5/testbench.sv
+L0 1
+R8
+r1
+!s85 0
+31
+!s108 1585223174.000000
+!s107 C:/ECE385_Project_Files/Lab5/testbench.sv|
+!s90 -reportprogress|300|-sv|-work|work|+incdir+C:/ECE385_Project_Files/Lab5|C:/ECE385_Project_Files/Lab5/testbench.sv|
+!i113 1
+R12
+R13
+R14

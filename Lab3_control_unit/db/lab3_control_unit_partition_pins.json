@@ -1,0 +1,61 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "SA0",
+					"strict" : false
+				},
+				{
+					"name" : "SHIFT",
+					"strict" : false
+				},
+				{
+					"name" : "C0",
+					"strict" : false
+				},
+				{
+					"name" : "C1",
+					"strict" : false
+				},
+				{
+					"name" : "SA1",
+					"strict" : false
+				},
+				{
+					"name" : "SB0",
+					"strict" : false
+				},
+				{
+					"name" : "SB1",
+					"strict" : false
+				},
+				{
+					"name" : "Q",
+					"strict" : false
+				},
+				{
+					"name" : "LOAD_A",
+					"strict" : false
+				},
+				{
+					"name" : "EXECUTE",
+					"strict" : false
+				},
+				{
+					"name" : "LOAD_B",
+					"strict" : false
+				},
+				{
+					"name" : "CLK",
+					"strict" : false
+				},
+				{
+					"name" : "high",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

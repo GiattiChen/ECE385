@@ -1,0 +1,529 @@
+$comment
+	File created using the following command:
+		vcd file control_logic_test.msim.vcd -direction
+$end
+$date
+	Wed Mar 04 21:04:58 2020
+$end
+$version
+	ModelSim Version 10.5b
+$end
+$timescale
+	1ps
+$end
+
+$scope module control_logic_test_vlg_vec_tst $end
+$var reg 1 ! CLOCK $end
+$var reg 1 " FETCH $end
+$var reg 1 # HIGH $end
+$var reg 1 $ LDSBR $end
+$var reg 1 % LOW $end
+$var reg 1 & SAR0 $end
+$var reg 1 ' SAR1 $end
+$var reg 1 ( STORE $end
+$var wire 1 ) A $end
+$var wire 1 * B $end
+$var wire 1 + Qa $end
+$var wire 1 , Qb $end
+$var wire 1 - Qc $end
+$var wire 1 . Qd $end
+$var wire 1 / select $end
+
+$scope module i1 $end
+$var wire 1 0 gnd $end
+$var wire 1 1 vcc $end
+$var wire 1 2 unknown $end
+$var tri1 1 3 devclrn $end
+$var tri1 1 4 devpor $end
+$var tri1 1 5 devoe $end
+$var wire 1 6 B~output_o $end
+$var wire 1 7 A~output_o $end
+$var wire 1 8 select~output_o $end
+$var wire 1 9 Qa~output_o $end
+$var wire 1 : Qb~output_o $end
+$var wire 1 ; Qc~output_o $end
+$var wire 1 < Qd~output_o $end
+$var wire 1 = HIGH~input_o $end
+$var wire 1 > FETCH~input_o $end
+$var wire 1 ? CLOCK~input_o $end
+$var wire 1 @ inst3|94~combout $end
+$var wire 1 A inst3|26~0_combout $end
+$var wire 1 B LOW~input_o $end
+$var wire 1 C inst3|85~combout $end
+$var wire 1 D inst3|85~clkctrl_outclk $end
+$var wire 1 E inst3|26~q $end
+$var wire 1 F inst3|93~combout $end
+$var wire 1 G inst3|25~0_combout $end
+$var wire 1 H inst3|25~q $end
+$var wire 1 I SAR1~input_o $end
+$var wire 1 J SAR0~input_o $end
+$var wire 1 K inst|4~0_combout $end
+$var wire 1 L inst|4~1_combout $end
+$var wire 1 M LDSBR~input_o $end
+$var wire 1 N STORE~input_o $end
+$var wire 1 O inst11|4~0_combout $end
+$var wire 1 P inst3|92~combout $end
+$var wire 1 Q inst3|24~0_combout $end
+$var wire 1 R inst3|24~q $end
+$var wire 1 S inst3|91~0_combout $end
+$var wire 1 T inst3|91~combout $end
+$var wire 1 U inst3|23~0_combout $end
+$var wire 1 V inst3|23~q $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+1#
+0$
+0%
+0&
+0'
+0(
+0)
+1*
+0+
+0,
+0-
+0.
+1/
+00
+11
+x2
+13
+14
+15
+16
+07
+18
+09
+0:
+0;
+0<
+1=
+0>
+0?
+0@
+1A
+0B
+0C
+0D
+0E
+0F
+1G
+0H
+0I
+0J
+1K
+0L
+0M
+0N
+0O
+1P
+1Q
+0R
+0S
+1T
+1U
+0V
+$end
+#25000
+1!
+1?
+1@
+1E
+19
+0K
+1+
+0A
+#50000
+0!
+0?
+1F
+0@
+#60000
+1$
+1M
+17
+1)
+#75000
+1!
+1?
+0F
+1@
+1H
+0E
+09
+1:
+1S
+1,
+0+
+0G
+1A
+#100000
+0!
+0?
+0@
+#125000
+1!
+1?
+1@
+1E
+19
+0S
+1+
+0A
+#150000
+0!
+0?
+1F
+0P
+0@
+#175000
+1!
+1?
+0F
+1P
+1@
+0H
+1R
+0E
+09
+1;
+0:
+1S
+1K
+0,
+1-
+0+
+1G
+0Q
+1A
+#180000
+0$
+0M
+07
+0)
+#200000
+0!
+0?
+0@
+#225000
+1!
+1?
+1@
+1E
+19
+0S
+0K
+1+
+0A
+#240000
+1"
+1>
+#250000
+0!
+0?
+1F
+0@
+#275000
+1!
+1?
+0F
+1@
+1H
+0E
+09
+1:
+1S
+1,
+0+
+0G
+1A
+#300000
+0!
+0?
+0@
+#325000
+1!
+1?
+1@
+1E
+19
+1+
+0A
+#350000
+0!
+0?
+1F
+0T
+0P
+0@
+#375000
+1!
+1?
+0F
+1T
+1P
+1@
+0H
+1V
+0R
+0E
+09
+0;
+1<
+0:
+0S
+1K
+0,
+1.
+0-
+0+
+1G
+0U
+1Q
+1A
+1L
+06
+0*
+#400000
+0!
+0?
+0@
+#420000
+0"
+0>
+0L
+16
+1*
+#425000
+1!
+1?
+1@
+1E
+19
+0K
+1+
+0A
+#450000
+0!
+0?
+1F
+0@
+#460000
+1(
+1N
+#475000
+1!
+1?
+0F
+1@
+1H
+0E
+09
+1:
+1S
+1,
+0+
+0G
+1A
+#500000
+0!
+0?
+0@
+#525000
+1!
+1?
+1@
+1E
+19
+0S
+1+
+0A
+#550000
+0!
+0?
+1F
+0P
+0@
+#575000
+1!
+1?
+0F
+1P
+1@
+0H
+1R
+0E
+09
+1;
+0:
+1S
+1K
+0,
+1-
+0+
+1G
+0Q
+1A
+1O
+08
+0/
+#600000
+0!
+0?
+0@
+#625000
+1!
+1?
+1@
+1E
+19
+0S
+0K
+1+
+0A
+0O
+18
+1/
+#640000
+0(
+0N
+#650000
+0!
+0?
+1F
+0@
+#675000
+1!
+1?
+0F
+1@
+1H
+0E
+09
+1:
+1S
+1,
+0+
+0G
+1A
+#700000
+0!
+0?
+0@
+#725000
+1!
+1?
+1@
+1E
+19
+1+
+0A
+#750000
+0!
+0?
+1F
+0T
+0P
+0@
+#775000
+1!
+1?
+0F
+1T
+1P
+1@
+0H
+0V
+0R
+0E
+09
+0;
+0<
+0:
+0S
+1K
+0,
+0.
+0-
+0+
+1G
+1U
+1Q
+1A
+#800000
+0!
+0?
+0@
+#825000
+1!
+1?
+1@
+1E
+19
+0K
+1+
+0A
+#850000
+0!
+0?
+1F
+0@
+#875000
+1!
+1?
+0F
+1@
+1H
+0E
+09
+1:
+1S
+1,
+0+
+0G
+1A
+#900000
+0!
+0?
+0@
+#925000
+1!
+1?
+1@
+1E
+19
+0S
+1+
+0A
+#950000
+0!
+0?
+1F
+0P
+0@
+#975000
+1!
+1?
+0F
+1P
+1@
+0H
+1R
+0E
+09
+1;
+0:
+1S
+1K
+0,
+1-
+0+
+1G
+0Q
+1A
+#1000000

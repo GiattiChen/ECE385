@@ -1,0 +1,31 @@
+transcript on
+if {[file exists rtl_work]} {
+	vdel -lib rtl_work -all
+}
+vlib rtl_work
+vmap work rtl_work
+
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6/XinhaoTong\ Lab6_files {C:/ECE385_Project_Files/Lab6/XinhaoTong Lab6_files/NZP.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6/XinhaoTong\ Lab6_files {C:/ECE385_Project_Files/Lab6/XinhaoTong Lab6_files/COMP.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6/XinhaoTong\ Lab6_files {C:/ECE385_Project_Files/Lab6/XinhaoTong Lab6_files/BEN.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6/XinhaoTong\ Lab6_files {C:/ECE385_Project_Files/Lab6/XinhaoTong Lab6_files/ALU.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/HexDriver.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/tristate.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/test_memory.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/SLC3_2.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/Mem2IO.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/ISDU.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/REG_FILE.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/datapath.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/memory_contents.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/slc3.sv}
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/lab6_toplevel.sv}
+
+vlog -sv -work work +incdir+C:/ECE385_Project_Files/Lab6 {C:/ECE385_Project_Files/Lab6/testbench_week2.sv}
+
+vsim -t 1ps -L altera_ver -L lpm_ver -L sgate_ver -L altera_mf_ver -L altera_lnsim_ver -L cycloneive_ver -L rtl_work -L work -voptargs="+acc"  testbench_week2
+
+add wave *
+view structure
+view signals
+run 30000 ns

@@ -1,0 +1,98 @@
+|control_logic_test
+B <= 7400:inst.1
+HIGH => 7485:inst8.AEBI
+HIGH => 74193:inst3.DN
+HIGH => 74193:inst3.LDN
+LOW => 7485:inst8.AGBI
+LOW => 7485:inst8.ALBI
+LOW => 74193:inst3.CLR
+CLOCK => 74193:inst3.UP
+SAR0 => 7485:inst8.B0
+SAR1 => 7485:inst8.B1
+FETCH => 7400:inst.2
+A <= LDSBR.DB_MAX_OUTPUT_PORT_TYPE
+LDSBR => A.DATAIN
+select <= 7400:inst11.1
+STORE => 7400:inst11.3
+Qa <= 74193:inst3.QA
+Qb <= 74193:inst3.QB
+Qc <= 74193:inst3.QC
+Qd <= 74193:inst3.QD
+
+
+|control_logic_test|7400:inst
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+
+|control_logic_test|7485:inst8
+a[0] => f7485:sub.a[0]
+a[1] => f7485:sub.a[1]
+a[2] => ~NO_FANOUT~
+a[3] => ~NO_FANOUT~
+b[0] => f7485:sub.b[0]
+b[1] => f7485:sub.b[1]
+b[2] => ~NO_FANOUT~
+b[3] => ~NO_FANOUT~
+agbi => f7485:sub.agbi
+albi => f7485:sub.albi
+aebi => f7485:sub.aebi
+agbo <= f7485:sub.agbo
+albo <= f7485:sub.albo
+aebo <= f7485:sub.aebo
+
+
+|control_logic_test|7485:inst8|f7485:sub
+ALBO <= 87.DB_MAX_OUTPUT_PORT_TYPE
+AGBI => 96.IN0
+A0 => 90.IN0
+A0 => 104.IN0
+A0 => 103.IN1
+B0 => 90.IN1
+B0 => 97.IN0
+A1 => 89.IN0
+A1 => 112.IN0
+A1 => 104.IN1
+B1 => 89.IN1
+B1 => 95.IN0
+A2 => 91.IN0
+A2 => 129.IN0
+A2 => 105.IN1
+B2 => 91.IN1
+B2 => 100.IN0
+A3 => 92.IN0
+A3 => 114.IN0
+A3 => 129.IN1
+B3 => 92.IN1
+B3 => 99.IN0
+AEBI => 93.IN0
+AEBI => 108.IN0
+AEBO <= 108.DB_MAX_OUTPUT_PORT_TYPE
+AGBO <= 86.DB_MAX_OUTPUT_PORT_TYPE
+ALBI => 134.IN0
+
+
+|control_logic_test|74193:inst3
+BON <= 28.DB_MAX_OUTPUT_PORT_TYPE
+CLR => 44.IN0
+LDN => 43.IN0
+B => 53.IN2
+A => 52.IN2
+DN => 90.IN0
+UP => 89.IN0
+C => 54.IN2
+D => 55.IN2
+CON <= 27.DB_MAX_OUTPUT_PORT_TYPE
+QD <= 23.DB_MAX_OUTPUT_PORT_TYPE
+QC <= 24.DB_MAX_OUTPUT_PORT_TYPE
+QB <= 25.DB_MAX_OUTPUT_PORT_TYPE
+QA <= 26.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|control_logic_test|7400:inst11
+1 <= 4.DB_MAX_OUTPUT_PORT_TYPE
+2 => 4.IN0
+3 => 4.IN1
+
+

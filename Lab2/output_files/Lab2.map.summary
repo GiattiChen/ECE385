@@ -1,0 +1,14 @@
+Analysis & Synthesis Status : Successful - Thu Mar 05 18:56:42 2020
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Standard Edition
+Revision Name : Lab2
+Top-level Entity Name : Lab2
+Family : Cyclone IV E
+Total logic elements : 24
+    Total combinational functions : 24
+    Dedicated logic registers : 12
+Total registers : 12
+Total pins : 23
+Total virtual pins : 0
+Total memory bits : 0
+Embedded Multiplier 9-bit elements : 0
+Total PLLs : 0

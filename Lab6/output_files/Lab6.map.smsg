@@ -1,0 +1,9 @@
+Info (10281): Verilog HDL Declaration information at datapath.sv(23): object "COMP5" differs only in case from object "comp5" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 23
+Info (10281): Verilog HDL Declaration information at datapath.sv(23): object "COMP7" differs only in case from object "comp7" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 23
+Info (10281): Verilog HDL Declaration information at datapath.sv(23): object "COMP10" differs only in case from object "comp10" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 23
+Info (10281): Verilog HDL Declaration information at datapath.sv(23): object "COMP11" differs only in case from object "comp11" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 23
+Info (10281): Verilog HDL Declaration information at datapath.sv(6): object "ADDR2MUX" differs only in case from object "addr2mux" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 6
+Info (10281): Verilog HDL Declaration information at datapath.sv(7): object "ADDR1MUX" differs only in case from object "addr1mux" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 7
+Info (10281): Verilog HDL Declaration information at datapath.sv(24): object "SR1_IN" differs only in case from object "SR1_in" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 24
+Info (10281): Verilog HDL Declaration information at datapath.sv(24): object "DR_IN" differs only in case from object "DR_in" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 24
+Info (10281): Verilog HDL Declaration information at datapath.sv(14): object "BEN" differs only in case from object "ben" in the same scope File: C:/ECE385_Project_Files/Lab6/datapath.sv Line: 14

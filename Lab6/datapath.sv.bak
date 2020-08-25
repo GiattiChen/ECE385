@@ -1,0 +1,28 @@
+module datapath(
+                      input logic Clk, Reset, 
+							 input logic LD_MAR, LD_MDR, LD_IR, LD_BEN, LD_CC, LD_REG, LD_PC, LD_LED,
+							 input logic GatePC, GateMDR, GateALU, GateMARMUX,
+							 input logic [1:0] PCMUX, ADDR2MUX, ALUK,
+							 input logic DRMUX, SR1MUX, SR2MUX, ADDR1MUX,
+							 input logic [15:0] MDR_In,
+							 input logic MIO_EN,
+							 output logic [15:0] MAR, MDR, IR,
+							 output logic [11:0] LED,
+							 output logic BEN
+
+)
+
+
+//	BUS_MUX BUSnew (.d0(PC), .d1(MDR), .d2(ALUval), .d3(MARMUXval), .s({GatePC, GateMDR, GateALU, GateMARMUX}), .y(BUS));
+//	register MAR_reg(.Clk(Clk), .Reset(Reset), .Load(LD_MAR), .Data_in(BUS), .Data_out(MAR));
+//		
+//	mux2 mdrMUX(.d0(BUS), .d1(MDR_In), .s(MIO_EN), .y(MDRval));
+//	register MDR_reg(.Clk(Clk), .Reset(Reset), .Load(LD_MDR), .Data_in(MDRval), .Data_out(MDR));
+//
+//	assign PCplus1 = PC+1;
+//	register IR_reg(.Clk(Clk), .Reset(Reset), .Load(LD_IR), .Data_in(BUS), .Data_out(IR));
+//	mux4 pcmux(.d0(PCplus1), .d1(MARMUXval), .d2(BUS), .d3(16'b0), .s(PCMUX), .y(PCval));
+//	register PC_reg(.Clk(Clk), .Reset(Reset), .Load(LD_PC), .Data_in(PCval), .Data_out(PC));
+
+
+endmodule
