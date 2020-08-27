@@ -4,13 +4,13 @@
 		<extension point="org.eclipse.cdt.core.LanguageSettingsProvider">
 			<provider id="altera.tool.Nios2GCCBuiltinSpecsDetector">
 				<language id="org.eclipse.cdt.core.gcc">
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/lib/gcc/nios2-elf/5.3.0/include">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/H-x86_64-mingw32/lib/gcc/nios2-elf/5.3.0/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/lib/gcc/nios2-elf/5.3.0/include-fixed">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/H-x86_64-mingw32/lib/gcc/nios2-elf/5.3.0/include-fixed">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/nios2-elf/include">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/H-x86_64-mingw32/nios2-elf/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="NIOS2" value="1">
@@ -328,6 +328,9 @@
 					<entry kind="macro" name="__INT_FAST16_TYPE__" value="int">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
+					<entry kind="macro" name="__INT_FAST32_MAX__" value="3412">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
 					<entry kind="macro" name="__INT_FAST32_MAX__" value="0x7fffffff">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -431,9 +434,6 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__ORDER_LITTLE_ENDIAN__" value="1234">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
-					<entry kind="macro" name="__ORDER_PDP_ENDIAN__" value="3412">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__PRAGMA_REDEFINE_EXTNAME" value="1">
@@ -675,22 +675,22 @@
 					</entry>
 				</language>
 				<language id="org.eclipse.cdt.core.g++">
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/nios2-elf/include/c++/5.3.0">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/nios2-elf/include/c++/5.3.0">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/nios2-elf/include/c++/5.3.0/nios2-elf">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/nios2-elf/include/c++/5.3.0/nios2-elf">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/nios2-elf/include/c++/5.3.0/backward">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/nios2-elf/include/c++/5.3.0/backward">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/lib/gcc/nios2-elf/5.3.0/include">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/H-x86_64-mingw32/lib/gcc/nios2-elf/5.3.0/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/lib/gcc/nios2-elf/5.3.0/include-fixed">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/H-x86_64-mingw32/lib/gcc/nios2-elf/5.3.0/include-fixed">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
-					<entry kind="includePath" name="C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/nios2-elf/include">
+					<entry kind="includePath" name="E:/nios2eds/bin/gnu/H-x86_64-mingw32/nios2-elf/include">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="NIOS2" value="1">
@@ -915,6 +915,9 @@
 					<entry kind="macro" name="__GCC_ATOMIC_CHAR_LOCK_FREE" value="1">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
+					<entry kind="macro" name="__GCC_ATOMIC_INT_LOCK_FREE" value="0">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
 					<entry kind="macro" name="__GCC_ATOMIC_INT_LOCK_FREE" value="1">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -946,9 +949,6 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__GNUC_MINOR__" value="3">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
-					<entry kind="macro" name="__GNUC_PATCHLEVEL__" value="0">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__GNUC__" value="5">
@@ -1113,6 +1113,9 @@
 					<entry kind="macro" name="__LONG_MAX__" value="0x7fffffffL">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
+					<entry kind="macro" name="__NIOS2" value="8">
+						<flag value="BUILTIN|READONLY"/>
+					</entry>
 					<entry kind="macro" name="__NIOS2" value="1">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
@@ -1168,9 +1171,6 @@
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__SIZEOF_LONG_DOUBLE__" value="8">
-						<flag value="BUILTIN|READONLY"/>
-					</entry>
-					<entry kind="macro" name="__SIZEOF_LONG_LONG__" value="8">
 						<flag value="BUILTIN|READONLY"/>
 					</entry>
 					<entry kind="macro" name="__SIZEOF_LONG__" value="4">

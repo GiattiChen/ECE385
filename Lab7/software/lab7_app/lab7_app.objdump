@@ -37,19 +37,19 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   9 .debug_aranges 000002b0  00000000  00000000  00001f40  2**3
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_info   00003a0f  00000000  00000000  000021f0  2**0
+ 10 .debug_info   00003a0c  00000000  00000000  000021f0  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 0000117e  00000000  00000000  00005bff  2**0
+ 11 .debug_abbrev 0000117e  00000000  00000000  00005bfc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_line   00001228  00000000  00000000  00006d7d  2**0
+ 12 .debug_line   00001200  00000000  00000000  00006d7a  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_frame  0000040c  00000000  00000000  00007fa8  2**2
+ 13 .debug_frame  0000040c  00000000  00000000  00007f7c  2**2
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    00000ea8  00000000  00000000  000083b4  2**0
+ 14 .debug_str    00000ed5  00000000  00000000  00008388  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    00000430  00000000  00000000  0000925c  2**0
+ 15 .debug_loc    00000430  00000000  00000000  0000925d  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_alt_sim_info 00000010  00000000  00000000  0000968c  2**2
+ 16 .debug_alt_sim_info 00000010  00000000  00000000  00009690  2**2
                   CONTENTS, READONLY, DEBUGGING
  17 .debug_ranges 00000080  00000000  00000000  000096a0  2**3
                   CONTENTS, READONLY, DEBUGGING
@@ -75,11 +75,11 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
  28 .sopc_system_name 00000008  00000000  00000000  0000a907  2**0
                   CONTENTS, READONLY
- 29 .quartus_project_dir 0000001c  00000000  00000000  0000a90f  2**0
+ 29 .quartus_project_dir 00000019  00000000  00000000  0000a90f  2**0
                   CONTENTS, READONLY
- 30 .jdi          00003db5  00000000  00000000  0000a92b  2**0
+ 30 .jdi          00003db5  00000000  00000000  0000a928  2**0
                   CONTENTS, READONLY
- 31 .sopcinfo     00055cf2  00000000  00000000  0000e6e0  2**0
+ 31 .sopcinfo     00055cf2  00000000  00000000  0000e6dd  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 10000000 l    d  .entry	00000000 .entry
@@ -296,9 +296,11 @@ int main()
 10000094:	e0bffb15 	stw	r2,-20(fp)
 	volatile unsigned int count = 0;
 10000098:	e03fff15 	stw	zero,-4(fp)
-
-	while (1)
 	{
+		// &KEY == 0 when KEY is not pressed
+		// &KEY == 1 when KEY is pressed
+		// from left -> right, KEY[3] -> KEY[0] on the board
+		// *KEY_PIO is equal to as {KEY[3],KEY[2]}, which is defined in lab7.sv
 		if (count >= 256){
 1000009c:	e0bfff17 	ldw	r2,-4(fp)
 100000a0:	10804030 	cmpltui	r2,r2,256
@@ -332,6 +334,7 @@ int main()
 100000ec:	e0bffb15 	stw	r2,-20(fp)
 		}
 
+		// Here Reset==1 means reset is pressed
 		if ((*KEY_PIO & 0x1)!=0 && Reset==1){
 100000f0:	e0bffc17 	ldw	r2,-16(fp)
 100000f4:	10800017 	ldw	r2,0(r2)
@@ -342,6 +345,7 @@ int main()
 10000108:	1000021e 	bne	r2,zero,10000114 <main+0xb8>
 			count = 0;
 1000010c:	e03fff15 	stw	zero,-4(fp)
+			// when KEY[2] is pressed for a while, we only reset once by setting Reset back to 0
 			Reset = 0;
 10000110:	e03ffa15 	stw	zero,-24(fp)
 		}
@@ -359,6 +363,7 @@ int main()
 10000138:	e0bfff17 	ldw	r2,-4(fp)
 1000013c:	1885883a 	add	r2,r3,r2
 10000140:	e0bfff15 	stw	r2,-4(fp)
+			// when KEY[3] is pressed for a while, we only accumulate once by setting Accumulate back to 0
 			Accumulate = 0;
 10000144:	e03ffb15 	stw	zero,-20(fp)
 		}
@@ -368,27 +373,16 @@ int main()
 10000148:	003fd406 	br	1000009c <__alt_data_end+0xf800009c>
 
 1000014c <alt_load_section>:
- */
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
 1000014c:	defffc04 	addi	sp,sp,-16
 10000150:	df000315 	stw	fp,12(sp)
 10000154:	df000304 	addi	fp,sp,12
 10000158:	e13ffd15 	stw	r4,-12(fp)
 1000015c:	e17ffe15 	stw	r5,-8(fp)
 10000160:	e1bfff15 	stw	r6,-4(fp)
-  if (to != from)
 10000164:	e0fffe17 	ldw	r3,-8(fp)
 10000168:	e0bffd17 	ldw	r2,-12(fp)
 1000016c:	18800c26 	beq	r3,r2,100001a0 <alt_load_section+0x54>
-  {
-    while( to != end )
 10000170:	00000806 	br	10000194 <alt_load_section+0x48>
-    {
-      *to++ = *from++;
 10000174:	e0bffe17 	ldw	r2,-8(fp)
 10000178:	10c00104 	addi	r3,r2,4
 1000017c:	e0fffe15 	stw	r3,-8(fp)
@@ -397,20 +391,9 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
 10000188:	e13ffd15 	stw	r4,-12(fp)
 1000018c:	18c00017 	ldw	r3,0(r3)
 10000190:	10c00015 	stw	r3,0(r2)
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
-  {
-    while( to != end )
 10000194:	e0fffe17 	ldw	r3,-8(fp)
 10000198:	e0bfff17 	ldw	r2,-4(fp)
 1000019c:	18bff51e 	bne	r3,r2,10000174 <__alt_data_end+0xf8000174>
-    {
-      *to++ = *from++;
-    }
-  }
-}
 100001a0:	0001883a 	nop
 100001a4:	e037883a 	mov	sp,fp
 100001a8:	df000017 	ldw	fp,0(sp)
@@ -418,21 +401,10 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
 100001b0:	f800283a 	ret
 
 100001b4 <alt_load>:
- * there is no bootloader, so this application is responsible for loading to
- * RAM any sections that are required.
- */  
-
-void alt_load (void)
-{
 100001b4:	defffe04 	addi	sp,sp,-8
 100001b8:	dfc00115 	stw	ra,4(sp)
 100001bc:	df000015 	stw	fp,0(sp)
 100001c0:	d839883a 	mov	fp,sp
-  /* 
-   * Copy the .rwdata section. 
-   */
-
-  alt_load_section (&__flash_rwdata_start, 
 100001c4:	01840034 	movhi	r6,4096
 100001c8:	3183c604 	addi	r6,r6,3864
 100001cc:	01440034 	movhi	r5,4096
@@ -440,12 +412,6 @@ void alt_load (void)
 100001d4:	01040034 	movhi	r4,4096
 100001d8:	2103c604 	addi	r4,r4,3864
 100001dc:	000014c0 	call	1000014c <alt_load_section>
-
-  /*
-   * Copy the exception handler.
-   */
-
-  alt_load_section (&__flash_exceptions_start, 
 100001e0:	01840034 	movhi	r6,4096
 100001e4:	31800804 	addi	r6,r6,32
 100001e8:	01440034 	movhi	r5,4096
@@ -453,12 +419,6 @@ void alt_load (void)
 100001f0:	01040034 	movhi	r4,4096
 100001f4:	21000804 	addi	r4,r4,32
 100001f8:	000014c0 	call	1000014c <alt_load_section>
-
-  /*
-   * Copy the .rodata section.
-   */
-
-  alt_load_section (&__flash_rodata_start, 
 100001fc:	01840034 	movhi	r6,4096
 10000200:	31824b04 	addi	r6,r6,2348
 10000204:	01440034 	movhi	r5,4096
@@ -466,16 +426,8 @@ void alt_load (void)
 1000020c:	01040034 	movhi	r4,4096
 10000210:	21024704 	addi	r4,r4,2332
 10000214:	000014c0 	call	1000014c <alt_load_section>
-  
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
 10000218:	00004080 	call	10000408 <alt_dcache_flush_all>
-  alt_icache_flush_all();
 1000021c:	00005140 	call	10000514 <alt_icache_flush_all>
-}
 10000220:	0001883a 	nop
 10000224:	e037883a 	mov	sp,fp
 10000228:	dfc00117 	ldw	ra,4(sp)
@@ -763,33 +715,17 @@ static int alt_dev_null_write (alt_fd* fd, const char* ptr, int len)
 10000450:	f800283a 	ret
 
 10000454 <_do_ctors>:
-/*
- * Run the C++ static constructors.
- */
-
-void _do_ctors(void)
-{
 10000454:	defffd04 	addi	sp,sp,-12
 10000458:	dfc00215 	stw	ra,8(sp)
 1000045c:	df000115 	stw	fp,4(sp)
 10000460:	df000104 	addi	fp,sp,4
-  constructor* ctor;
-
-  for (ctor = &__CTOR_END__[-1]; ctor >= __CTOR_LIST__; ctor--)
 10000464:	00840034 	movhi	r2,4096
 10000468:	10824604 	addi	r2,r2,2328
 1000046c:	e0bfff15 	stw	r2,-4(fp)
 10000470:	00000606 	br	1000048c <_do_ctors+0x38>
-        (*ctor) (); 
 10000474:	e0bfff17 	ldw	r2,-4(fp)
 10000478:	10800017 	ldw	r2,0(r2)
 1000047c:	103ee83a 	callr	r2
-
-void _do_ctors(void)
-{
-  constructor* ctor;
-
-  for (ctor = &__CTOR_END__[-1]; ctor >= __CTOR_LIST__; ctor--)
 10000480:	e0bfff17 	ldw	r2,-4(fp)
 10000484:	10bfff04 	addi	r2,r2,-4
 10000488:	e0bfff15 	stw	r2,-4(fp)
@@ -797,8 +733,6 @@ void _do_ctors(void)
 10000490:	00840034 	movhi	r2,4096
 10000494:	10824704 	addi	r2,r2,2332
 10000498:	18bff62e 	bgeu	r3,r2,10000474 <__alt_data_end+0xf8000474>
-        (*ctor) (); 
-}
 1000049c:	0001883a 	nop
 100004a0:	e037883a 	mov	sp,fp
 100004a4:	dfc00117 	ldw	ra,4(sp)
@@ -807,33 +741,17 @@ void _do_ctors(void)
 100004b0:	f800283a 	ret
 
 100004b4 <_do_dtors>:
-/*
- * Run the C++ static destructors.
- */
-
-void _do_dtors(void)
-{
 100004b4:	defffd04 	addi	sp,sp,-12
 100004b8:	dfc00215 	stw	ra,8(sp)
 100004bc:	df000115 	stw	fp,4(sp)
 100004c0:	df000104 	addi	fp,sp,4
-  destructor* dtor;
-
-  for (dtor = &__DTOR_END__[-1]; dtor >= __DTOR_LIST__; dtor--)
 100004c4:	00840034 	movhi	r2,4096
 100004c8:	10824604 	addi	r2,r2,2328
 100004cc:	e0bfff15 	stw	r2,-4(fp)
 100004d0:	00000606 	br	100004ec <_do_dtors+0x38>
-        (*dtor) (); 
 100004d4:	e0bfff17 	ldw	r2,-4(fp)
 100004d8:	10800017 	ldw	r2,0(r2)
 100004dc:	103ee83a 	callr	r2
-
-void _do_dtors(void)
-{
-  destructor* dtor;
-
-  for (dtor = &__DTOR_END__[-1]; dtor >= __DTOR_LIST__; dtor--)
 100004e0:	e0bfff17 	ldw	r2,-4(fp)
 100004e4:	10bfff04 	addi	r2,r2,-4
 100004e8:	e0bfff15 	stw	r2,-4(fp)
@@ -841,8 +759,6 @@ void _do_dtors(void)
 100004f0:	00840034 	movhi	r2,4096
 100004f4:	10824704 	addi	r2,r2,2332
 100004f8:	18bff62e 	bgeu	r3,r2,100004d4 <__alt_data_end+0xf80004d4>
-        (*dtor) (); 
-}
 100004fc:	0001883a 	nop
 10000500:	e037883a 	mov	sp,fp
 10000504:	dfc00117 	ldw	ra,4(sp)
@@ -994,7 +910,7 @@ void altera_nios2_gen2_irq_init(void)
 100006a4:	d9400015 	stw	r5,0(sp)
 100006a8:	d9800115 	stw	r6,4(sp)
 100006ac:	d9c00215 	stw	r7,8(sp)
-100006b0:	00000000 	call	10000000 <__reset>
+100006b0:	00000000 	call	10000000 <__alt_mem_sdram>
 100006b4:	d9400017 	ldw	r5,0(sp)
 100006b8:	d9800117 	ldw	r6,4(sp)
 100006bc:	d9c00217 	ldw	r7,8(sp)
@@ -1078,7 +994,7 @@ void altera_nios2_gen2_irq_init(void)
 100007ec:	10003226 	beq	r2,zero,100008b8 <__call_exitprocs+0x178>
 100007f0:	a009883a 	mov	r4,r20
 100007f4:	98800015 	stw	r2,0(r19)
-100007f8:	00000000 	call	10000000 <__reset>
+100007f8:	00000000 	call	10000000 <__alt_mem_sdram>
 100007fc:	9d000017 	ldw	r20,0(r19)
 10000800:	a03fe41e 	bne	r20,zero,10000794 <__alt_data_end+0xf8000794>
 10000804:	dfc00a17 	ldw	ra,40(sp)
