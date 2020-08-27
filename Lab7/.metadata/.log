@@ -317,3 +317,4 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 
 !ENTRY com.altera.sbtgui.launch 1 0 2020-08-24 22:50:42.912
 !MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=USB-Blaster on localhost [USB-0]' --device=1 --instance=0 --go --sidp=0x98 --id=0x0 --timestamp=1598270877 /cygdrive/c/ECE385_Project_Files/Lab7/software/lab7_app/lab7_app.elf]
+	at org.eclipse.core.internal.resources.SaveManager.startup(SaveManager.java:1588)
