@@ -2472,34 +2472,34 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 1000122c:	18c03fcc 	andi	r3,r3,255
 10001230:	20c6f03a 	xor	r3,r4,r3
 10001234:	10c00015 	stw	r3,0(r2)
-		key[i] = (w[10][0][i]<<24) ^ (w[10][1][i]<<16) ^ (w[10][2][i]<<8) ^ (w[10][3][i]);
+		key[i] = (w[0][0][i]<<24) ^ (w[0][1][i]<<16) ^ (w[0][2][i]<<8) ^ (w[0][3][i]);
 10001238:	e0bfc917 	ldw	r2,-220(fp)
 1000123c:	1085883a 	add	r2,r2,r2
 10001240:	1085883a 	add	r2,r2,r2
 10001244:	1007883a 	mov	r3,r2
 10001248:	e0bfff17 	ldw	r2,-4(fp)
 1000124c:	10c5883a 	add	r2,r2,r3
-10001250:	e13ff404 	addi	r4,fp,-48
+10001250:	e13fcc04 	addi	r4,fp,-208
 10001254:	e0ffc917 	ldw	r3,-220(fp)
 10001258:	20c7883a 	add	r3,r4,r3
 1000125c:	18c00003 	ldbu	r3,0(r3)
 10001260:	18c03fcc 	andi	r3,r3,255
 10001264:	1808963a 	slli	r4,r3,24
-10001268:	e17ff504 	addi	r5,fp,-44
+10001268:	e17fcd04 	addi	r5,fp,-204
 1000126c:	e0ffc917 	ldw	r3,-220(fp)
 10001270:	28c7883a 	add	r3,r5,r3
 10001274:	18c00003 	ldbu	r3,0(r3)
 10001278:	18c03fcc 	andi	r3,r3,255
 1000127c:	1806943a 	slli	r3,r3,16
 10001280:	20c8f03a 	xor	r4,r4,r3
-10001284:	e17ff604 	addi	r5,fp,-40
+10001284:	e17fce04 	addi	r5,fp,-200
 10001288:	e0ffc917 	ldw	r3,-220(fp)
 1000128c:	28c7883a 	add	r3,r5,r3
 10001290:	18c00003 	ldbu	r3,0(r3)
 10001294:	18c03fcc 	andi	r3,r3,255
 10001298:	1806923a 	slli	r3,r3,8
 1000129c:	20c8f03a 	xor	r4,r4,r3
-100012a0:	e17ff704 	addi	r5,fp,-36
+100012a0:	e17fcf04 	addi	r5,fp,-196
 100012a4:	e0ffc917 	ldw	r3,-220(fp)
 100012a8:	28c7883a 	add	r3,r5,r3
 100012ac:	18c00003 	ldbu	r3,0(r3)
@@ -2519,7 +2519,7 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 100012cc:	10800110 	cmplti	r2,r2,4
 100012d0:	103fb81e 	bne	r2,zero,100011b4 <__alt_data_end+0xf80011b4>
 		msg_enc[i] = (state[0][i]<<24) ^ (state[1][i]<<16) ^ (state[2][i]<<8) ^ (state[3][i]);
-		key[i] = (w[10][0][i]<<24) ^ (w[10][1][i]<<16) ^ (w[10][2][i]<<8) ^ (w[10][3][i]);
+		key[i] = (w[0][0][i]<<24) ^ (w[0][1][i]<<16) ^ (w[0][2][i]<<8) ^ (w[0][3][i]);
 	}
 }
 100012d4:	0001883a 	nop
@@ -2544,7 +2544,6 @@ void decrypt(unsigned int * msg_enc, unsigned int * msg_dec, unsigned int * key)
 10001300:	e1bfff15 	stw	r6,-4(fp)
 	// Implement this function
 	// Send the 128-bit Key (Split into 4* 32-bit)
-
 	AES_PTR[0] = key[0];
 10001304:	d0a00017 	ldw	r2,-32768(gp)
 10001308:	e0ffff17 	ldw	r3,-4(fp)
@@ -2593,45 +2592,44 @@ void decrypt(unsigned int * msg_enc, unsigned int * msg_dec, unsigned int * key)
 10001398:	18c00317 	ldw	r3,12(r3)
 1000139c:	10c00015 	stw	r3,0(r2)
 
-
 	AES_PTR[14] = 1;
 100013a0:	d0a00017 	ldw	r2,-32768(gp)
 100013a4:	10800e04 	addi	r2,r2,56
 100013a8:	00c00044 	movi	r3,1
 100013ac:	10c00015 	stw	r3,0(r2)
-	AES_PTR[14] = 0;//MAKE SURE U SET TO ZERO RIGHT AFTER SETTING 1 or NO REPETITION
-100013b0:	d0a00017 	ldw	r2,-32768(gp)
-100013b4:	10800e04 	addi	r2,r2,56
-100013b8:	10000015 	stw	zero,0(r2)
 	while(AES_PTR[15] == 0){}
-100013bc:	0001883a 	nop
-100013c0:	d0a00017 	ldw	r2,-32768(gp)
-100013c4:	10800f04 	addi	r2,r2,60
-100013c8:	10800017 	ldw	r2,0(r2)
-100013cc:	103ffc26 	beq	r2,zero,100013c0 <__alt_data_end+0xf80013c0>
+100013b0:	0001883a 	nop
+100013b4:	d0a00017 	ldw	r2,-32768(gp)
+100013b8:	10800f04 	addi	r2,r2,60
+100013bc:	10800017 	ldw	r2,0(r2)
+100013c0:	103ffc26 	beq	r2,zero,100013b4 <__alt_data_end+0xf80013b4>
 	msg_dec[0] = AES_PTR[8];
-100013d0:	d0a00017 	ldw	r2,-32768(gp)
-100013d4:	10c00817 	ldw	r3,32(r2)
-100013d8:	e0bffe17 	ldw	r2,-8(fp)
-100013dc:	10c00015 	stw	r3,0(r2)
+100013c4:	d0a00017 	ldw	r2,-32768(gp)
+100013c8:	10c00817 	ldw	r3,32(r2)
+100013cc:	e0bffe17 	ldw	r2,-8(fp)
+100013d0:	10c00015 	stw	r3,0(r2)
 	msg_dec[1] = AES_PTR[9];
-100013e0:	e0bffe17 	ldw	r2,-8(fp)
-100013e4:	10800104 	addi	r2,r2,4
-100013e8:	d0e00017 	ldw	r3,-32768(gp)
-100013ec:	18c00917 	ldw	r3,36(r3)
-100013f0:	10c00015 	stw	r3,0(r2)
+100013d4:	e0bffe17 	ldw	r2,-8(fp)
+100013d8:	10800104 	addi	r2,r2,4
+100013dc:	d0e00017 	ldw	r3,-32768(gp)
+100013e0:	18c00917 	ldw	r3,36(r3)
+100013e4:	10c00015 	stw	r3,0(r2)
 	msg_dec[2] = AES_PTR[10];
-100013f4:	e0bffe17 	ldw	r2,-8(fp)
-100013f8:	10800204 	addi	r2,r2,8
-100013fc:	d0e00017 	ldw	r3,-32768(gp)
-10001400:	18c00a17 	ldw	r3,40(r3)
-10001404:	10c00015 	stw	r3,0(r2)
+100013e8:	e0bffe17 	ldw	r2,-8(fp)
+100013ec:	10800204 	addi	r2,r2,8
+100013f0:	d0e00017 	ldw	r3,-32768(gp)
+100013f4:	18c00a17 	ldw	r3,40(r3)
+100013f8:	10c00015 	stw	r3,0(r2)
 	msg_dec[3] = AES_PTR[11];
-10001408:	e0bffe17 	ldw	r2,-8(fp)
-1000140c:	10800304 	addi	r2,r2,12
-10001410:	d0e00017 	ldw	r3,-32768(gp)
-10001414:	18c00b17 	ldw	r3,44(r3)
-10001418:	10c00015 	stw	r3,0(r2)
+100013fc:	e0bffe17 	ldw	r2,-8(fp)
+10001400:	10800304 	addi	r2,r2,12
+10001404:	d0e00017 	ldw	r3,-32768(gp)
+10001408:	18c00b17 	ldw	r3,44(r3)
+1000140c:	10c00015 	stw	r3,0(r2)
+	AES_PTR[14] = 0;
+10001410:	d0a00017 	ldw	r2,-32768(gp)
+10001414:	10800e04 	addi	r2,r2,56
+10001418:	10000015 	stw	zero,0(r2)
 }
 1000141c:	0001883a 	nop
 10001420:	e037883a 	mov	sp,fp
@@ -30566,7 +30564,7 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
 1001a140:	d9400015 	stw	r5,0(sp)
 1001a144:	d9800115 	stw	r6,4(sp)
 1001a148:	d9c00215 	stw	r7,8(sp)
-1001a14c:	00000000 	call	10000000 <__alt_mem_sdram>
+1001a14c:	00000000 	call	10000000 <__reset>
 1001a150:	d9400017 	ldw	r5,0(sp)
 1001a154:	d9800117 	ldw	r6,4(sp)
 1001a158:	d9c00217 	ldw	r7,8(sp)
@@ -30650,7 +30648,7 @@ alt_exception_cause_generated_bad_addr(alt_exception_cause cause)
 1001a288:	10003226 	beq	r2,zero,1001a354 <__call_exitprocs+0x178>
 1001a28c:	a009883a 	mov	r4,r20
 1001a290:	98800015 	stw	r2,0(r19)
-1001a294:	00000000 	call	10000000 <__alt_mem_sdram>
+1001a294:	00000000 	call	10000000 <__reset>
 1001a298:	9d000017 	ldw	r20,0(r19)
 1001a29c:	a03fe41e 	bne	r20,zero,1001a230 <__alt_data_end+0xf801a230>
 1001a2a0:	dfc00a17 	ldw	ra,40(sp)

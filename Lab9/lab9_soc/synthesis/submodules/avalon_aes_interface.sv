@@ -17,29 +17,6 @@ Register Map:
    15: 32bit Done Register
 
 ************************************************************************/
-
-module avalon_aes_interface (
-	// Avalon Clock Input
-	input logic CLK,
-	
-	// Avalon Reset Input
-	input logic RESET,
-	
-	// Avalon-MM Slave Signals
-	input  logic AVL_READ,					// Avalon-MM Read
-	input  logic AVL_WRITE,					// Avalon-MM Write
-	input  logic AVL_CS,						// Avalon-MM Chip Select
-	input  logic [3:0] AVL_BYTE_EN,		// Avalon-MM Byte Enable
-	input  logic [3:0] AVL_ADDR,			// Avalon-MM Address
-	input  logic [31:0] AVL_WRITEDATA,	// Avalon-MM Write Data
-	output logic [31:0] AVL_READDATA,	// Avalon-MM Read Data
-	
-	// Exported Conduit
-	output logic [31:0] EXPORT_DATA		// Exported Conduit Signal to LEDs
-);
-
-//assign EXPORT_DATA = 
-
 //logic [31:0] AES_KEY0;
 //logic [31:0] AES_KEY1;
 //logic [31:0] AES_KEY2;
@@ -61,12 +38,49 @@ module avalon_aes_interface (
 //logic [31:0] AES_START;
 //logic [31:0] AES_DONE;
 
+module avalon_aes_interface (
+	// Avalon Clock Input
+	input logic CLK,
+	
+	// Avalon Reset Input
+	input logic RESET,
+	
+	// Avalon-MM Slave Signals
+	input  logic AVL_READ,					// Avalon-MM Read
+	input  logic AVL_WRITE,					// Avalon-MM Write
+	input  logic AVL_CS,						// Avalon-MM Chip Select
+	input  logic [3:0] AVL_BYTE_EN,		// Avalon-MM Byte Enable
+	input  logic [3:0] AVL_ADDR,			// Avalon-MM Address
+	input  logic [31:0] AVL_WRITEDATA,	// Avalon-MM Write Data
+	output logic [31:0] AVL_READDATA,	// Avalon-MM Read Data
+	
+	// Exported Conduit
+	output logic [31:0] EXPORT_DATA		// Exported Conduit Signal to LEDs
+);
+
+
 logic [15:0][31:0] Reg_Array;
+logic [3:0][31:0] Reg_temp; // store data for Reg_Array[8:11] temporarily
+logic done;
+
+
+AES AES_inst(.CLK(CLK),
+				 .RESET(RESET),
+				 .AES_START(Reg_Array[14][0]),
+				 .AES_DONE(done),
+				 .AES_KEY({Reg_Array[0][31:0],Reg_Array[1][31:0],Reg_Array[2][31:0],Reg_Array[3][31:0]}),
+				 .AES_MSG_ENC({Reg_Array[4][31:0],Reg_Array[5][31:0],Reg_Array[6][31:0],Reg_Array[7][31:0]}),
+				 .AES_MSG_DEC({Reg_temp[0][31:0],Reg_temp[1][31:0],Reg_temp[2][31:0],Reg_temp[3][31:0]}));
+
+	
+assign DATA_EXPORT = {Reg_Array[4][31:16], Reg_Array[7][15:0]};
+
 
 
 always_ff @ (posedge CLK)
 begin
 	if (AVL_CS)
+	begin
 		if (RESET)
 			begin
 				// clear all registers
@@ -86,6 +100,15 @@ begin
 				Reg_Array[13] <= 32'b0;
 				Reg_Array[14] <= 32'b0;
 				Reg_Array[15] <= 32'b0;
+				if (done)
+					begin
+						Reg_Array[8][31:0] <=  Reg_temp[0];
+						Reg_Array[9][31:0] <=  Reg_temp[1];
+						Reg_Array[10][31:0] <=  Reg_temp[2];
+						Reg_Array[11][31:0] <=  Reg_temp[3];
+						Reg_Array[15][0] <= done;
+							
+					end
 			end
 		else if (AVL_WRITE)
 			begin
@@ -101,19 +124,42 @@ begin
 					4'b0100:
 						Reg_Array[AVL_ADDR]<= {Reg_Array[AVL_ADDR][31:24],AVL_WRITEDATA[23:16],Reg_Array[AVL_ADDR][15:0]};
 					4'b0010:
-						Reg_Array[AVL_ADDR]<= {Reg_Array[AVL_ADDR][31:16],AVL_WRITEDATA[15:8],Reg_Array[AVL_ADDR][7:0]};
+						Reg_Array[AVL_ADDR]<= {Reg_Array[AVL_ADDR][31:16],AVL_WRITEDATA[15:7],Reg_Array[AVL_ADDR][6:0]};
 					4'b0001:
 						Reg_Array[AVL_ADDR]<= {Reg_Array[AVL_ADDR][31:8],AVL_WRITEDATA[7:0]};	
 					default: 
 						// do nothing
 						Reg_Array[AVL_ADDR] <= Reg_Array[AVL_ADDR];
 				endcase
+//				if (done)
+//					begin
+//						Reg_Array[8][31:0] <=  Reg_temp[0];
+//						Reg_Array[9][31:0] <=  Reg_temp[1];
+//						Reg_Array[10][31:0] <=  Reg_temp[2];
+//						Reg_Array[11][31:0] <=  Reg_temp[3];
+//						Reg_Array[15][0] <= done;
+//							
+//					end
 			end
+			
 		else if (AVL_READ)
 			begin 
 			// required that readdata should have the value of the addressed register on the same cycle
 				AVL_READDATA <= Reg_Array[AVL_ADDR];		
 			end
+	end
+		
+//	if (done)
+//	begin
+//		Reg_Array[8][31:0] <=  Reg_temp[0];
+//		Reg_Array[9][31:0] <=  Reg_temp[1];
+//		Reg_Array[10][31:0] <=  Reg_temp[2];
+//		Reg_Array[11][31:0] <=  Reg_temp[3];
+//		Reg_Array[15][0] <= done;
+//			
+//	end
+		
+		
 		// Not sure if need to consider the following two else cause to avoid latch
 //		else
 			//  if no read/write signal, do nothing

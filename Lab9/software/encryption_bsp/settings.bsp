@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>2020-8-27 0:19:33</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1598455173649</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>2020-8-27 20:41:34</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1598528494700</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\ECE385_Project_Files\Lab9\software\encryption_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>..\..\lab9_soc.sopcinfo</SopcDesignFile>

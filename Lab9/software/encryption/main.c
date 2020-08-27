@@ -247,7 +247,7 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 	// printMatrix(state);
 	for (i=0;i<4;i++){
 		msg_enc[i] = (state[0][i]<<24) ^ (state[1][i]<<16) ^ (state[2][i]<<8) ^ (state[3][i]);
-		key[i] = (w[10][0][i]<<24) ^ (w[10][1][i]<<16) ^ (w[10][2][i]<<8) ^ (w[10][3][i]);
+		key[i] = (w[0][0][i]<<24) ^ (w[0][1][i]<<16) ^ (w[0][2][i]<<8) ^ (w[0][3][i]);
 	}
 }
 
