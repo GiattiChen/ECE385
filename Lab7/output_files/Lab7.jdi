@@ -85,7 +85,7 @@
   <sld_infos>
     <sld_info hpath="lab7_soc:m_lab7_soc" name="m_lab7_soc">
       <assignment_values>
-        <assignment_value text="QSYS_NAME lab7_soc HAS_SOPCINFO 1 GENERATION_ID 1598270877"/>
+        <assignment_value text="QSYS_NAME lab7_soc HAS_SOPCINFO 1 GENERATION_ID 1598505898"/>
       </assignment_values>
       <parameters/>
     </sld_info>
