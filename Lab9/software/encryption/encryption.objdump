@@ -37,49 +37,49 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   9 .debug_aranges 00001370  00000000  00000000  0001df58  2**3
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_info   00033c93  00000000  00000000  0001f2c8  2**0
+ 10 .debug_info   00033c99  00000000  00000000  0001f2c8  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_abbrev 0000cbc4  00000000  00000000  00052f5b  2**0
+ 11 .debug_abbrev 0000cbc4  00000000  00000000  00052f61  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_line   0001110c  00000000  00000000  0005fb1f  2**0
+ 12 .debug_line   00011030  00000000  00000000  0005fb25  2**0
                   CONTENTS, READONLY, DEBUGGING
- 13 .debug_frame  00002c30  00000000  00000000  00070c2c  2**2
+ 13 .debug_frame  00002c30  00000000  00000000  00070b58  2**2
                   CONTENTS, READONLY, DEBUGGING
- 14 .debug_str    0000471e  00000000  00000000  0007385c  2**0
+ 14 .debug_str    00004755  00000000  00000000  00073788  2**0
                   CONTENTS, READONLY, DEBUGGING
- 15 .debug_loc    000250a0  00000000  00000000  00077f7a  2**0
+ 15 .debug_loc    000250a0  00000000  00000000  00077edd  2**0
                   CONTENTS, READONLY, DEBUGGING
- 16 .debug_alt_sim_info 00000010  00000000  00000000  0009d01c  2**2
+ 16 .debug_alt_sim_info 00000010  00000000  00000000  0009cf80  2**2
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_ranges 00002160  00000000  00000000  0009d030  2**3
+ 17 .debug_ranges 00002160  00000000  00000000  0009cf90  2**3
                   CONTENTS, READONLY, DEBUGGING
- 18 .thread_model 00000003  00000000  00000000  000a2e3e  2**0
+ 18 .thread_model 00000003  00000000  00000000  000a2d9e  2**0
                   CONTENTS, READONLY
- 19 .cpu          0000000c  00000000  00000000  000a2e41  2**0
+ 19 .cpu          0000000c  00000000  00000000  000a2da1  2**0
                   CONTENTS, READONLY
- 20 .qsys         00000001  00000000  00000000  000a2e4d  2**0
+ 20 .qsys         00000001  00000000  00000000  000a2dad  2**0
                   CONTENTS, READONLY
- 21 .simulation_enabled 00000001  00000000  00000000  000a2e4e  2**0
+ 21 .simulation_enabled 00000001  00000000  00000000  000a2dae  2**0
                   CONTENTS, READONLY
- 22 .sysid_hash   00000004  00000000  00000000  000a2e4f  2**0
+ 22 .sysid_hash   00000004  00000000  00000000  000a2daf  2**0
                   CONTENTS, READONLY
- 23 .sysid_base   00000004  00000000  00000000  000a2e53  2**0
+ 23 .sysid_base   00000004  00000000  00000000  000a2db3  2**0
                   CONTENTS, READONLY
- 24 .sysid_time   00000004  00000000  00000000  000a2e57  2**0
+ 24 .sysid_time   00000004  00000000  00000000  000a2db7  2**0
                   CONTENTS, READONLY
- 25 .stderr_dev   0000000b  00000000  00000000  000a2e5b  2**0
+ 25 .stderr_dev   0000000b  00000000  00000000  000a2dbb  2**0
                   CONTENTS, READONLY
- 26 .stdin_dev    0000000b  00000000  00000000  000a2e66  2**0
+ 26 .stdin_dev    0000000b  00000000  00000000  000a2dc6  2**0
                   CONTENTS, READONLY
- 27 .stdout_dev   0000000b  00000000  00000000  000a2e71  2**0
+ 27 .stdout_dev   0000000b  00000000  00000000  000a2dd1  2**0
                   CONTENTS, READONLY
- 28 .sopc_system_name 00000008  00000000  00000000  000a2e7c  2**0
+ 28 .sopc_system_name 00000008  00000000  00000000  000a2ddc  2**0
                   CONTENTS, READONLY
- 29 .quartus_project_dir 0000001c  00000000  00000000  000a2e84  2**0
+ 29 .quartus_project_dir 0000001e  00000000  00000000  000a2de4  2**0
                   CONTENTS, READONLY
- 30 .jdi          000052b2  00000000  00000000  000a2ea0  2**0
+ 30 .jdi          000052b2  00000000  00000000  000a2e02  2**0
                   CONTENTS, READONLY
- 31 .sopcinfo     00053fe6  00000000  00000000  000a8152  2**0
+ 31 .sopcinfo     00053fe6  00000000  00000000  000a80b4  2**0
                   CONTENTS, READONLY
 SYMBOL TABLE:
 10000000 l    d  .entry	00000000 .entry
@@ -1042,83 +1042,55 @@ alt_after_alt_main:
 10000268:	003fff06 	br	10000268 <__alt_data_end+0xf8000268>
 
 1000026c <charToHex>:
- *  
- *  Input: a character c (e.g. 'A')
- *  Output: converted 4-bit value (e.g. 0xA)
- */
-char charToHex(char c)
-{
 1000026c:	defffd04 	addi	sp,sp,-12
 10000270:	df000215 	stw	fp,8(sp)
 10000274:	df000204 	addi	fp,sp,8
 10000278:	2005883a 	mov	r2,r4
 1000027c:	e0bfff05 	stb	r2,-4(fp)
-	char hex = c;
 10000280:	e0bfff03 	ldbu	r2,-4(fp)
 10000284:	e0bffe05 	stb	r2,-8(fp)
-
-	if (hex >= '0' && hex <= '9')
 10000288:	e0bffe07 	ldb	r2,-8(fp)
 1000028c:	10800c10 	cmplti	r2,r2,48
 10000290:	1000071e 	bne	r2,zero,100002b0 <charToHex+0x44>
 10000294:	e0bffe07 	ldb	r2,-8(fp)
 10000298:	10800e88 	cmpgei	r2,r2,58
 1000029c:	1000041e 	bne	r2,zero,100002b0 <charToHex+0x44>
-		hex -= '0';
 100002a0:	e0bffe03 	ldbu	r2,-8(fp)
 100002a4:	10bff404 	addi	r2,r2,-48
 100002a8:	e0bffe05 	stb	r2,-8(fp)
 100002ac:	00001906 	br	10000314 <charToHex+0xa8>
-	else if (hex >= 'A' && hex <= 'F')
 100002b0:	e0bffe07 	ldb	r2,-8(fp)
 100002b4:	10801050 	cmplti	r2,r2,65
 100002b8:	10000a1e 	bne	r2,zero,100002e4 <charToHex+0x78>
 100002bc:	e0bffe07 	ldb	r2,-8(fp)
 100002c0:	108011c8 	cmpgei	r2,r2,71
 100002c4:	1000071e 	bne	r2,zero,100002e4 <charToHex+0x78>
-	{
-		hex -= 'A';
 100002c8:	e0bffe03 	ldbu	r2,-8(fp)
 100002cc:	10bfefc4 	addi	r2,r2,-65
 100002d0:	e0bffe05 	stb	r2,-8(fp)
-		hex += 10;
 100002d4:	e0bffe03 	ldbu	r2,-8(fp)
 100002d8:	10800284 	addi	r2,r2,10
 100002dc:	e0bffe05 	stb	r2,-8(fp)
 100002e0:	00000c06 	br	10000314 <charToHex+0xa8>
-	}
-	else if (hex >= 'a' && hex <= 'f')
 100002e4:	e0bffe07 	ldb	r2,-8(fp)
 100002e8:	10801850 	cmplti	r2,r2,97
 100002ec:	1000091e 	bne	r2,zero,10000314 <charToHex+0xa8>
 100002f0:	e0bffe07 	ldb	r2,-8(fp)
 100002f4:	108019c8 	cmpgei	r2,r2,103
 100002f8:	1000061e 	bne	r2,zero,10000314 <charToHex+0xa8>
-	{
-		hex -= 'a';
 100002fc:	e0bffe03 	ldbu	r2,-8(fp)
 10000300:	10bfe7c4 	addi	r2,r2,-97
 10000304:	e0bffe05 	stb	r2,-8(fp)
-		hex += 10;
 10000308:	e0bffe03 	ldbu	r2,-8(fp)
 1000030c:	10800284 	addi	r2,r2,10
 10000310:	e0bffe05 	stb	r2,-8(fp)
-	}
-	return hex;
 10000314:	e0bffe03 	ldbu	r2,-8(fp)
-}
 10000318:	e037883a 	mov	sp,fp
 1000031c:	df000017 	ldw	fp,0(sp)
 10000320:	dec00104 	addi	sp,sp,4
 10000324:	f800283a 	ret
 
 10000328 <charsToHex>:
- *  
- *  Input: two characters c1 and c2 (e.g. 'A' and '7')
- *  Output: converted byte value (e.g. 0xA7)
- */
-char charsToHex(char c1, char c2)
-{
 10000328:	defffb04 	addi	sp,sp,-20
 1000032c:	dfc00415 	stw	ra,16(sp)
 10000330:	df000315 	stw	fp,12(sp)
@@ -1127,23 +1099,19 @@ char charsToHex(char c1, char c2)
 1000033c:	2805883a 	mov	r2,r5
 10000340:	e0fffe05 	stb	r3,-8(fp)
 10000344:	e0bfff05 	stb	r2,-4(fp)
-	char hex1 = charToHex(c1);
 10000348:	e0bffe07 	ldb	r2,-8(fp)
 1000034c:	1009883a 	mov	r4,r2
 10000350:	000026c0 	call	1000026c <charToHex>
 10000354:	e0bffd05 	stb	r2,-12(fp)
-	char hex2 = charToHex(c2);
 10000358:	e0bfff07 	ldb	r2,-4(fp)
 1000035c:	1009883a 	mov	r4,r2
 10000360:	000026c0 	call	1000026c <charToHex>
 10000364:	e0bffd45 	stb	r2,-11(fp)
-	return (hex1 << 4) + hex2;
 10000368:	e0bffd03 	ldbu	r2,-12(fp)
 1000036c:	1004913a 	slli	r2,r2,4
 10000370:	1007883a 	mov	r3,r2
 10000374:	e0bffd43 	ldbu	r2,-11(fp)
 10000378:	1885883a 	add	r2,r3,r2
-}
 1000037c:	e037883a 	mov	sp,fp
 10000380:	dfc00117 	ldw	ra,4(sp)
 10000384:	df000017 	ldw	fp,0(sp)
@@ -1151,22 +1119,13 @@ char charsToHex(char c1, char c2)
 1000038c:	f800283a 	ret
 
 10000390 <printMatrix>:
- *         key_ascii - Pointer to 32x 8-bit char array that contains the input key in ASCII format
- *  Output:  msg_enc - Pointer to 4x 32-bit int array that contains the encrypted message
- *               key - Pointer to 4x 32-bit int array that contains the input key
- */
-
-void printMatrix(unsigned char(*w)[4]){
 10000390:	defffb04 	addi	sp,sp,-20
 10000394:	dfc00415 	stw	ra,16(sp)
 10000398:	df000315 	stw	fp,12(sp)
 1000039c:	df000304 	addi	fp,sp,12
 100003a0:	e13fff15 	stw	r4,-4(fp)
-	int i;
-	for(i=0; i<4; i++){
 100003a4:	e03ffe15 	stw	zero,-8(fp)
 100003a8:	00002a06 	br	10000454 <printMatrix+0xc4>
-		printf("%2x %2x %2x %2x\n", w[i][0],  w[i][1],  w[i][2], w[i][3]);
 100003ac:	e0bffe17 	ldw	r2,-8(fp)
 100003b0:	1085883a 	add	r2,r2,r2
 100003b4:	1085883a 	add	r2,r2,r2
@@ -1206,21 +1165,12 @@ void printMatrix(unsigned char(*w)[4]){
 1000043c:	010400b4 	movhi	r4,4098
 10000440:	21296404 	addi	r4,r4,-23152
 10000444:	00026400 	call	10002640 <printf>
- *               key - Pointer to 4x 32-bit int array that contains the input key
- */
-
-void printMatrix(unsigned char(*w)[4]){
-	int i;
-	for(i=0; i<4; i++){
 10000448:	e0bffe17 	ldw	r2,-8(fp)
 1000044c:	10800044 	addi	r2,r2,1
 10000450:	e0bffe15 	stw	r2,-8(fp)
 10000454:	e0bffe17 	ldw	r2,-8(fp)
 10000458:	10800110 	cmplti	r2,r2,4
 1000045c:	103fd31e 	bne	r2,zero,100003ac <__alt_data_end+0xf80003ac>
-		printf("%2x %2x %2x %2x\n", w[i][0],  w[i][1],  w[i][2], w[i][3]);
-	}
-}
 10000460:	0001883a 	nop
 10000464:	e037883a 	mov	sp,fp
 10000468:	dfc00117 	ldw	ra,4(sp)
@@ -1229,23 +1179,15 @@ void printMatrix(unsigned char(*w)[4]){
 10000474:	f800283a 	ret
 
 10000478 <AddRoundKey>:
-
-
-void AddRoundKey(unsigned char(*state)[4], unsigned char(*w)[4])
-{
 10000478:	defffb04 	addi	sp,sp,-20
 1000047c:	df000415 	stw	fp,16(sp)
 10000480:	df000404 	addi	fp,sp,16
 10000484:	e13ffe15 	stw	r4,-8(fp)
 10000488:	e17fff15 	stw	r5,-4(fp)
-	int i, j;
-	for(i=0; i<4; i++){
 1000048c:	e03ffc15 	stw	zero,-16(fp)
 10000490:	00002806 	br	10000534 <AddRoundKey+0xbc>
-		for(j=0; j<4; j++){
 10000494:	e03ffd15 	stw	zero,-12(fp)
 10000498:	00002006 	br	1000051c <AddRoundKey+0xa4>
-			state[i][j] = state[i][j] ^ w[i][j];
 1000049c:	e0bffc17 	ldw	r2,-16(fp)
 100004a0:	1085883a 	add	r2,r2,r2
 100004a4:	1085883a 	add	r2,r2,r2
@@ -1275,35 +1217,18 @@ void AddRoundKey(unsigned char(*state)[4], unsigned char(*w)[4])
 10000504:	e0bffd17 	ldw	r2,-12(fp)
 10000508:	1885883a 	add	r2,r3,r2
 1000050c:	11000005 	stb	r4,0(r2)
-
-void AddRoundKey(unsigned char(*state)[4], unsigned char(*w)[4])
-{
-	int i, j;
-	for(i=0; i<4; i++){
-		for(j=0; j<4; j++){
 10000510:	e0bffd17 	ldw	r2,-12(fp)
 10000514:	10800044 	addi	r2,r2,1
 10000518:	e0bffd15 	stw	r2,-12(fp)
 1000051c:	e0bffd17 	ldw	r2,-12(fp)
 10000520:	10800110 	cmplti	r2,r2,4
 10000524:	103fdd1e 	bne	r2,zero,1000049c <__alt_data_end+0xf800049c>
-
-
-void AddRoundKey(unsigned char(*state)[4], unsigned char(*w)[4])
-{
-	int i, j;
-	for(i=0; i<4; i++){
 10000528:	e0bffc17 	ldw	r2,-16(fp)
 1000052c:	10800044 	addi	r2,r2,1
 10000530:	e0bffc15 	stw	r2,-16(fp)
 10000534:	e0bffc17 	ldw	r2,-16(fp)
 10000538:	10800110 	cmplti	r2,r2,4
 1000053c:	103fd51e 	bne	r2,zero,10000494 <__alt_data_end+0xf8000494>
-		for(j=0; j<4; j++){
-			state[i][j] = state[i][j] ^ w[i][j];
-		}
-	}
-}
 10000540:	0001883a 	nop
 10000544:	e037883a 	mov	sp,fp
 10000548:	df000017 	ldw	fp,0(sp)
@@ -1311,20 +1236,14 @@ void AddRoundKey(unsigned char(*state)[4], unsigned char(*w)[4])
 10000550:	f800283a 	ret
 
 10000554 <SubBytes>:
-
-void SubBytes(unsigned char(*state)[4]){
 10000554:	defffc04 	addi	sp,sp,-16
 10000558:	df000315 	stw	fp,12(sp)
 1000055c:	df000304 	addi	fp,sp,12
 10000560:	e13fff15 	stw	r4,-4(fp)
-	int i, j;
-	for(i=0; i<4; i++){
 10000564:	e03ffd15 	stw	zero,-12(fp)
 10000568:	00002206 	br	100005f4 <SubBytes+0xa0>
-		for(j=0; j<4; j++){
 1000056c:	e03ffe15 	stw	zero,-8(fp)
 10000570:	00001a06 	br	100005dc <SubBytes+0x88>
-			state[i][j] = aes_sbox[state[i][j]];
 10000574:	e0bffd17 	ldw	r2,-12(fp)
 10000578:	1085883a 	add	r2,r2,r2
 1000057c:	1085883a 	add	r2,r2,r2
@@ -1348,35 +1267,18 @@ void SubBytes(unsigned char(*state)[4]){
 100005c4:	e0bffe17 	ldw	r2,-8(fp)
 100005c8:	2085883a 	add	r2,r4,r2
 100005cc:	10c00005 	stb	r3,0(r2)
-}
-
-void SubBytes(unsigned char(*state)[4]){
-	int i, j;
-	for(i=0; i<4; i++){
-		for(j=0; j<4; j++){
 100005d0:	e0bffe17 	ldw	r2,-8(fp)
 100005d4:	10800044 	addi	r2,r2,1
 100005d8:	e0bffe15 	stw	r2,-8(fp)
 100005dc:	e0bffe17 	ldw	r2,-8(fp)
 100005e0:	10800110 	cmplti	r2,r2,4
 100005e4:	103fe31e 	bne	r2,zero,10000574 <__alt_data_end+0xf8000574>
-	}
-}
-
-void SubBytes(unsigned char(*state)[4]){
-	int i, j;
-	for(i=0; i<4; i++){
 100005e8:	e0bffd17 	ldw	r2,-12(fp)
 100005ec:	10800044 	addi	r2,r2,1
 100005f0:	e0bffd15 	stw	r2,-12(fp)
 100005f4:	e0bffd17 	ldw	r2,-12(fp)
 100005f8:	10800110 	cmplti	r2,r2,4
 100005fc:	103fdb1e 	bne	r2,zero,1000056c <__alt_data_end+0xf800056c>
-		for(j=0; j<4; j++){
-			state[i][j] = aes_sbox[state[i][j]];
-		}
-	}
-}
 10000600:	0001883a 	nop
 10000604:	e037883a 	mov	sp,fp
 10000608:	df000017 	ldw	fp,0(sp)
@@ -1384,13 +1286,10 @@ void SubBytes(unsigned char(*state)[4]){
 10000610:	f800283a 	ret
 
 10000614 <ShiftRows>:
-
-void ShiftRows(unsigned char(*state)[4]){
 10000614:	defff904 	addi	sp,sp,-28
 10000618:	df000615 	stw	fp,24(sp)
 1000061c:	df000604 	addi	fp,sp,24
 10000620:	e13fff15 	stw	r4,-4(fp)
-	unsigned char temp0[4] = {state[0][0], state[0][1], state[0][2], state[0][3]};
 10000624:	e0bfff17 	ldw	r2,-4(fp)
 10000628:	10800003 	ldbu	r2,0(r2)
 1000062c:	e0bffb05 	stb	r2,-20(fp)
@@ -1403,7 +1302,6 @@ void ShiftRows(unsigned char(*state)[4]){
 10000648:	e0bfff17 	ldw	r2,-4(fp)
 1000064c:	108000c3 	ldbu	r2,3(r2)
 10000650:	e0bffbc5 	stb	r2,-17(fp)
-	unsigned char temp1[4] = {state[1][1], state[1][2], state[1][3], state[1][0]};
 10000654:	e0bfff17 	ldw	r2,-4(fp)
 10000658:	10800104 	addi	r2,r2,4
 1000065c:	10800043 	ldbu	r2,1(r2)
@@ -1420,7 +1318,6 @@ void ShiftRows(unsigned char(*state)[4]){
 10000688:	10800104 	addi	r2,r2,4
 1000068c:	10800003 	ldbu	r2,0(r2)
 10000690:	e0bffcc5 	stb	r2,-13(fp)
-	unsigned char temp2[4] = {state[2][2], state[2][3], state[2][0], state[2][1]};
 10000694:	e0bfff17 	ldw	r2,-4(fp)
 10000698:	10800204 	addi	r2,r2,8
 1000069c:	10800083 	ldbu	r2,2(r2)
@@ -1437,7 +1334,6 @@ void ShiftRows(unsigned char(*state)[4]){
 100006c8:	10800204 	addi	r2,r2,8
 100006cc:	10800043 	ldbu	r2,1(r2)
 100006d0:	e0bffdc5 	stb	r2,-9(fp)
-	unsigned char temp3[4] = {state[3][3], state[3][0], state[3][1], state[3][2]};
 100006d4:	e0bfff17 	ldw	r2,-4(fp)
 100006d8:	10800304 	addi	r2,r2,12
 100006dc:	108000c3 	ldbu	r2,3(r2)
@@ -1454,11 +1350,8 @@ void ShiftRows(unsigned char(*state)[4]){
 10000708:	10800304 	addi	r2,r2,12
 1000070c:	10800083 	ldbu	r2,2(r2)
 10000710:	e0bffec5 	stb	r2,-5(fp)
-int i; 
-	for (i=0;i<4;i++) {
 10000714:	e03ffa15 	stw	zero,-24(fp)
 10000718:	00000b06 	br	10000748 <ShiftRows+0x134>
-		state[0][i] = temp0[i];
 1000071c:	e0fffb04 	addi	r3,fp,-20
 10000720:	e0bffa17 	ldw	r2,-24(fp)
 10000724:	1885883a 	add	r2,r3,r2
@@ -1467,24 +1360,14 @@ int i;
 10000730:	e0bffa17 	ldw	r2,-24(fp)
 10000734:	2085883a 	add	r2,r4,r2
 10000738:	10c00005 	stb	r3,0(r2)
-	unsigned char temp0[4] = {state[0][0], state[0][1], state[0][2], state[0][3]};
-	unsigned char temp1[4] = {state[1][1], state[1][2], state[1][3], state[1][0]};
-	unsigned char temp2[4] = {state[2][2], state[2][3], state[2][0], state[2][1]};
-	unsigned char temp3[4] = {state[3][3], state[3][0], state[3][1], state[3][2]};
-int i; 
-	for (i=0;i<4;i++) {
 1000073c:	e0bffa17 	ldw	r2,-24(fp)
 10000740:	10800044 	addi	r2,r2,1
 10000744:	e0bffa15 	stw	r2,-24(fp)
 10000748:	e0bffa17 	ldw	r2,-24(fp)
 1000074c:	10800110 	cmplti	r2,r2,4
 10000750:	103ff21e 	bne	r2,zero,1000071c <__alt_data_end+0xf800071c>
-		state[0][i] = temp0[i];
-	}
-	for (i=0;i<4;i++) {
 10000754:	e03ffa15 	stw	zero,-24(fp)
 10000758:	00000c06 	br	1000078c <ShiftRows+0x178>
-		state[1][i] = temp1[i];
 1000075c:	e0bfff17 	ldw	r2,-4(fp)
 10000760:	11000104 	addi	r4,r2,4
 10000764:	e0fffc04 	addi	r3,fp,-16
@@ -1494,24 +1377,14 @@ int i;
 10000774:	e0bffa17 	ldw	r2,-24(fp)
 10000778:	2085883a 	add	r2,r4,r2
 1000077c:	10c00005 	stb	r3,0(r2)
-	unsigned char temp3[4] = {state[3][3], state[3][0], state[3][1], state[3][2]};
-int i; 
-	for (i=0;i<4;i++) {
-		state[0][i] = temp0[i];
-	}
-	for (i=0;i<4;i++) {
 10000780:	e0bffa17 	ldw	r2,-24(fp)
 10000784:	10800044 	addi	r2,r2,1
 10000788:	e0bffa15 	stw	r2,-24(fp)
 1000078c:	e0bffa17 	ldw	r2,-24(fp)
 10000790:	10800110 	cmplti	r2,r2,4
 10000794:	103ff11e 	bne	r2,zero,1000075c <__alt_data_end+0xf800075c>
-		state[1][i] = temp1[i];
-	}
-	for (i=0;i<4;i++) {
 10000798:	e03ffa15 	stw	zero,-24(fp)
 1000079c:	00000c06 	br	100007d0 <ShiftRows+0x1bc>
-		state[2][i] = temp2[i];
 100007a0:	e0bfff17 	ldw	r2,-4(fp)
 100007a4:	11000204 	addi	r4,r2,8
 100007a8:	e0fffd04 	addi	r3,fp,-12
@@ -1521,24 +1394,14 @@ int i;
 100007b8:	e0bffa17 	ldw	r2,-24(fp)
 100007bc:	2085883a 	add	r2,r4,r2
 100007c0:	10c00005 	stb	r3,0(r2)
-		state[0][i] = temp0[i];
-	}
-	for (i=0;i<4;i++) {
-		state[1][i] = temp1[i];
-	}
-	for (i=0;i<4;i++) {
 100007c4:	e0bffa17 	ldw	r2,-24(fp)
 100007c8:	10800044 	addi	r2,r2,1
 100007cc:	e0bffa15 	stw	r2,-24(fp)
 100007d0:	e0bffa17 	ldw	r2,-24(fp)
 100007d4:	10800110 	cmplti	r2,r2,4
 100007d8:	103ff11e 	bne	r2,zero,100007a0 <__alt_data_end+0xf80007a0>
-		state[2][i] = temp2[i];
-	}
-	for (i=0;i<4;i++) {
 100007dc:	e03ffa15 	stw	zero,-24(fp)
 100007e0:	00000c06 	br	10000814 <ShiftRows+0x200>
-		state[3][i] = temp3[i];
 100007e4:	e0bfff17 	ldw	r2,-4(fp)
 100007e8:	11000304 	addi	r4,r2,12
 100007ec:	e0fffe04 	addi	r3,fp,-8
@@ -1548,22 +1411,12 @@ int i;
 100007fc:	e0bffa17 	ldw	r2,-24(fp)
 10000800:	2085883a 	add	r2,r4,r2
 10000804:	10c00005 	stb	r3,0(r2)
-		state[1][i] = temp1[i];
-	}
-	for (i=0;i<4;i++) {
-		state[2][i] = temp2[i];
-	}
-	for (i=0;i<4;i++) {
 10000808:	e0bffa17 	ldw	r2,-24(fp)
 1000080c:	10800044 	addi	r2,r2,1
 10000810:	e0bffa15 	stw	r2,-24(fp)
 10000814:	e0bffa17 	ldw	r2,-24(fp)
 10000818:	10800110 	cmplti	r2,r2,4
 1000081c:	103ff11e 	bne	r2,zero,100007e4 <__alt_data_end+0xf80007e4>
-		state[3][i] = temp3[i];
-	}
-
-}
 10000820:	0001883a 	nop
 10000824:	e037883a 	mov	sp,fp
 10000828:	df000017 	ldw	fp,0(sp)
@@ -1571,8 +1424,6 @@ int i;
 10000830:	f800283a 	ret
 
 10000834 <MixColumns>:
-
-void MixColumns(unsigned char(*state)[4]){
 10000834:	defff704 	addi	sp,sp,-36
 10000838:	dfc00815 	stw	ra,32(sp)
 1000083c:	df000715 	stw	fp,28(sp)
@@ -1580,18 +1431,10 @@ void MixColumns(unsigned char(*state)[4]){
 10000844:	dc000515 	stw	r16,20(sp)
 10000848:	df000704 	addi	fp,sp,28
 1000084c:	e13ffd15 	stw	r4,-12(fp)
-	unsigned char currCol[4];
-	unsigned char resCol[4]; // result Col
-
-	int i, j;
-	for(j=0;j<4;j++){
 10000850:	e03ffa15 	stw	zero,-24(fp)
 10000854:	00009906 	br	10000abc <MixColumns+0x288>
-
-		for(i=0; i<4; i++){
 10000858:	e03ff915 	stw	zero,-28(fp)
 1000085c:	00001006 	br	100008a0 <MixColumns+0x6c>
-			currCol[i] = state[i][j];
 10000860:	e0bff917 	ldw	r2,-28(fp)
 10000864:	1085883a 	add	r2,r2,r2
 10000868:	1085883a 	add	r2,r2,r2
@@ -1605,24 +1448,12 @@ void MixColumns(unsigned char(*state)[4]){
 10000888:	e0bff917 	ldw	r2,-28(fp)
 1000088c:	2085883a 	add	r2,r4,r2
 10000890:	10c00005 	stb	r3,0(r2)
-	unsigned char resCol[4]; // result Col
-
-	int i, j;
-	for(j=0;j<4;j++){
-
-		for(i=0; i<4; i++){
 10000894:	e0bff917 	ldw	r2,-28(fp)
 10000898:	10800044 	addi	r2,r2,1
 1000089c:	e0bff915 	stw	r2,-28(fp)
 100008a0:	e0bff917 	ldw	r2,-28(fp)
 100008a4:	10800110 	cmplti	r2,r2,4
 100008a8:	103fed1e 	bne	r2,zero,10000860 <__alt_data_end+0xf8000860>
-
-		// determine the current column
-		// 2->index 0
-		// 3->index 1
-
-		resCol[0] = gf_mul[currCol[0]][0] ^ gf_mul[currCol[1]][1] ^ currCol[2] ^ currCol[3];
 100008ac:	e0bffb03 	ldbu	r2,-20(fp)
 100008b0:	10803fcc 	andi	r2,r2,255
 100008b4:	040400b4 	movhi	r16,4098
@@ -1650,7 +1481,6 @@ void MixColumns(unsigned char(*state)[4]){
 1000090c:	e0bffbc3 	ldbu	r2,-17(fp)
 10000910:	1884f03a 	xor	r2,r3,r2
 10000914:	e0bffc05 	stb	r2,-16(fp)
-		resCol[1] = currCol[0] ^ gf_mul[currCol[1]][0] ^ gf_mul[currCol[2]][1] ^ currCol[3];
 10000918:	e47ffb03 	ldbu	r17,-20(fp)
 1000091c:	e0bffb43 	ldbu	r2,-19(fp)
 10000920:	10803fcc 	andi	r2,r2,255
@@ -1678,7 +1508,6 @@ void MixColumns(unsigned char(*state)[4]){
 10000978:	e0bffbc3 	ldbu	r2,-17(fp)
 1000097c:	1884f03a 	xor	r2,r3,r2
 10000980:	e0bffc45 	stb	r2,-15(fp)
-		resCol[2] = currCol[0] ^ currCol[1] ^ gf_mul[currCol[2]][0] ^ gf_mul[currCol[3]][1];
 10000984:	e0fffb03 	ldbu	r3,-20(fp)
 10000988:	e0bffb43 	ldbu	r2,-19(fp)
 1000098c:	1884f03a 	xor	r2,r3,r2
@@ -1706,7 +1535,6 @@ void MixColumns(unsigned char(*state)[4]){
 100009e4:	10800003 	ldbu	r2,0(r2)
 100009e8:	8884f03a 	xor	r2,r17,r2
 100009ec:	e0bffc85 	stb	r2,-14(fp)
-		resCol[3] = gf_mul[currCol[0]][1] ^ currCol[1] ^ currCol[2] ^ gf_mul[currCol[3]][0];
 100009f0:	e0bffb03 	ldbu	r2,-20(fp)
 100009f4:	10803fcc 	andi	r2,r2,255
 100009f8:	040400b4 	movhi	r16,4098
@@ -1734,13 +1562,8 @@ void MixColumns(unsigned char(*state)[4]){
 10000a50:	10800003 	ldbu	r2,0(r2)
 10000a54:	8884f03a 	xor	r2,r17,r2
 10000a58:	e0bffcc5 	stb	r2,-13(fp)
-
-
-		// update the values of the whole column in the state
-		for(i=0; i<4; i++){
 10000a5c:	e03ff915 	stw	zero,-28(fp)
 10000a60:	00001006 	br	10000aa4 <MixColumns+0x270>
-			state[i][j] = resCol[i];
 10000a64:	e0bff917 	ldw	r2,-28(fp)
 10000a68:	1085883a 	add	r2,r2,r2
 10000a6c:	1085883a 	add	r2,r2,r2
@@ -1754,36 +1577,18 @@ void MixColumns(unsigned char(*state)[4]){
 10000a8c:	e0bffa17 	ldw	r2,-24(fp)
 10000a90:	2085883a 	add	r2,r4,r2
 10000a94:	10c00005 	stb	r3,0(r2)
-		resCol[2] = currCol[0] ^ currCol[1] ^ gf_mul[currCol[2]][0] ^ gf_mul[currCol[3]][1];
-		resCol[3] = gf_mul[currCol[0]][1] ^ currCol[1] ^ currCol[2] ^ gf_mul[currCol[3]][0];
-
-
-		// update the values of the whole column in the state
-		for(i=0; i<4; i++){
 10000a98:	e0bff917 	ldw	r2,-28(fp)
 10000a9c:	10800044 	addi	r2,r2,1
 10000aa0:	e0bff915 	stw	r2,-28(fp)
 10000aa4:	e0bff917 	ldw	r2,-28(fp)
 10000aa8:	10800110 	cmplti	r2,r2,4
 10000aac:	103fed1e 	bne	r2,zero,10000a64 <__alt_data_end+0xf8000a64>
-void MixColumns(unsigned char(*state)[4]){
-	unsigned char currCol[4];
-	unsigned char resCol[4]; // result Col
-
-	int i, j;
-	for(j=0;j<4;j++){
 10000ab0:	e0bffa17 	ldw	r2,-24(fp)
 10000ab4:	10800044 	addi	r2,r2,1
 10000ab8:	e0bffa15 	stw	r2,-24(fp)
 10000abc:	e0bffa17 	ldw	r2,-24(fp)
 10000ac0:	10800110 	cmplti	r2,r2,4
 10000ac4:	103f641e 	bne	r2,zero,10000858 <__alt_data_end+0xf8000858>
-		// update the values of the whole column in the state
-		for(i=0; i<4; i++){
-			state[i][j] = resCol[i];
-		}
-	}
-}
 10000ac8:	0001883a 	nop
 10000acc:	e6fffe04 	addi	sp,fp,-8
 10000ad0:	dfc00317 	ldw	ra,12(sp)
@@ -1794,32 +1599,19 @@ void MixColumns(unsigned char(*state)[4]){
 10000ae4:	f800283a 	ret
 
 10000ae8 <KeyExpansion>:
-
-void KeyExpansion(unsigned char(*w)[4][4])
-{
 10000ae8:	deffcd04 	addi	sp,sp,-204
 10000aec:	df003215 	stw	fp,200(sp)
 10000af0:	df003204 	addi	fp,sp,200
 10000af4:	e13fff15 	stw	r4,-4(fp)
-	int word;
-	int byte;
-	unsigned char temp[4];
-	unsigned char tempbyte;
-	unsigned char tempm[11][4][4];
-	for (key = 1; key < 11; key++){
 10000af8:	00800044 	movi	r2,1
 10000afc:	e0bfce15 	stw	r2,-200(fp)
 10000b00:	0000bb06 	br	10000df0 <KeyExpansion+0x308>
-		for (word = 0; word < 4; word++){
 10000b04:	e03fcf15 	stw	zero,-196(fp)
 10000b08:	0000b306 	br	10000dd8 <KeyExpansion+0x2f0>
-			if (word == 0){
 10000b0c:	e0bfcf17 	ldw	r2,-196(fp)
 10000b10:	10006f1e 	bne	r2,zero,10000cd0 <KeyExpansion+0x1e8>
-				for (byte = 0; byte < 4; byte++){					//rotword begin
 10000b14:	e03fd015 	stw	zero,-192(fp)
 10000b18:	00001206 	br	10000b64 <KeyExpansion+0x7c>
-					temp[byte] = w[key-1][3][byte];
 10000b1c:	e0ffce17 	ldw	r3,-200(fp)
 10000b20:	00840034 	movhi	r2,4096
 10000b24:	10bfffc4 	addi	r2,r2,-1
@@ -1835,27 +1627,16 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000b4c:	e0bfd017 	ldw	r2,-192(fp)
 10000b50:	2085883a 	add	r2,r4,r2
 10000b54:	10c00005 	stb	r3,0(r2)
-	unsigned char tempbyte;
-	unsigned char tempm[11][4][4];
-	for (key = 1; key < 11; key++){
-		for (word = 0; word < 4; word++){
-			if (word == 0){
-				for (byte = 0; byte < 4; byte++){					//rotword begin
 10000b58:	e0bfd017 	ldw	r2,-192(fp)
 10000b5c:	10800044 	addi	r2,r2,1
 10000b60:	e0bfd015 	stw	r2,-192(fp)
 10000b64:	e0bfd017 	ldw	r2,-192(fp)
 10000b68:	10800110 	cmplti	r2,r2,4
 10000b6c:	103feb1e 	bne	r2,zero,10000b1c <__alt_data_end+0xf8000b1c>
-					temp[byte] = w[key-1][3][byte];
-				}
-				tempbyte = temp[0];
 10000b70:	e0bfd143 	ldbu	r2,-187(fp)
 10000b74:	e0bfd105 	stb	r2,-188(fp)
-				for (byte = 0; byte < 3; byte++){
 10000b78:	e03fd015 	stw	zero,-192(fp)
 10000b7c:	00000c06 	br	10000bb0 <KeyExpansion+0xc8>
-					temp[byte] = temp[byte + 1];
 10000b80:	e0bfd017 	ldw	r2,-192(fp)
 10000b84:	10800044 	addi	r2,r2,1
 10000b88:	e0ffd144 	addi	r3,fp,-187
@@ -1865,28 +1646,16 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000b98:	e0bfd017 	ldw	r2,-192(fp)
 10000b9c:	2085883a 	add	r2,r4,r2
 10000ba0:	10c00005 	stb	r3,0(r2)
-			if (word == 0){
-				for (byte = 0; byte < 4; byte++){					//rotword begin
-					temp[byte] = w[key-1][3][byte];
-				}
-				tempbyte = temp[0];
-				for (byte = 0; byte < 3; byte++){
 10000ba4:	e0bfd017 	ldw	r2,-192(fp)
 10000ba8:	10800044 	addi	r2,r2,1
 10000bac:	e0bfd015 	stw	r2,-192(fp)
 10000bb0:	e0bfd017 	ldw	r2,-192(fp)
 10000bb4:	108000d0 	cmplti	r2,r2,3
 10000bb8:	103ff11e 	bne	r2,zero,10000b80 <__alt_data_end+0xf8000b80>
-					temp[byte] = temp[byte + 1];
-				}
-				temp[3] = tempbyte;									//rotword end
 10000bbc:	e0bfd103 	ldbu	r2,-188(fp)
 10000bc0:	e0bfd205 	stb	r2,-184(fp)
-
-				for (byte = 0; byte < 4; byte++){					//subword begin
 10000bc4:	e03fd015 	stw	zero,-192(fp)
 10000bc8:	00001006 	br	10000c0c <KeyExpansion+0x124>
-					temp[byte] = aes_sbox[temp[byte]];
 10000bcc:	e0ffd144 	addi	r3,fp,-187
 10000bd0:	e0bfd017 	ldw	r2,-192(fp)
 10000bd4:	1885883a 	add	r2,r3,r2
@@ -1900,22 +1669,12 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000bf4:	e0bfd017 	ldw	r2,-192(fp)
 10000bf8:	2085883a 	add	r2,r4,r2
 10000bfc:	10c00005 	stb	r3,0(r2)
-				for (byte = 0; byte < 3; byte++){
-					temp[byte] = temp[byte + 1];
-				}
-				temp[3] = tempbyte;									//rotword end
-
-				for (byte = 0; byte < 4; byte++){					//subword begin
 10000c00:	e0bfd017 	ldw	r2,-192(fp)
 10000c04:	10800044 	addi	r2,r2,1
 10000c08:	e0bfd015 	stw	r2,-192(fp)
 10000c0c:	e0bfd017 	ldw	r2,-192(fp)
 10000c10:	10800110 	cmplti	r2,r2,4
 10000c14:	103fed1e 	bne	r2,zero,10000bcc <__alt_data_end+0xf8000bcc>
-					temp[byte] = aes_sbox[temp[byte]];
-				}													//subword end
-
-				temp[0] = temp[0]^(Rcon[key]>>24);
 10000c18:	e13fd143 	ldbu	r4,-187(fp)
 10000c1c:	008400b4 	movhi	r2,4098
 10000c20:	10acfe04 	addi	r2,r2,-19464
@@ -1927,7 +1686,6 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000c38:	1004d63a 	srli	r2,r2,24
 10000c3c:	2084f03a 	xor	r2,r4,r2
 10000c40:	e0bfd145 	stb	r2,-187(fp)
-				temp[1]	= temp[1]^((Rcon[key]<<8)>>24);
 10000c44:	e13fd183 	ldbu	r4,-186(fp)
 10000c48:	008400b4 	movhi	r2,4098
 10000c4c:	10acfe04 	addi	r2,r2,-19464
@@ -1940,7 +1698,6 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000c68:	1004d63a 	srli	r2,r2,24
 10000c6c:	2084f03a 	xor	r2,r4,r2
 10000c70:	e0bfd185 	stb	r2,-186(fp)
-				temp[2] = temp[2]^((Rcon[key]<<16)>>24);
 10000c74:	e13fd1c3 	ldbu	r4,-185(fp)
 10000c78:	008400b4 	movhi	r2,4098
 10000c7c:	10acfe04 	addi	r2,r2,-19464
@@ -1953,7 +1710,6 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000c98:	1004d63a 	srli	r2,r2,24
 10000c9c:	2084f03a 	xor	r2,r4,r2
 10000ca0:	e0bfd1c5 	stb	r2,-185(fp)
-				temp[3] = temp[3]^((Rcon[key]<<24)>>24);			//xor with Rcon
 10000ca4:	e13fd203 	ldbu	r4,-184(fp)
 10000ca8:	008400b4 	movhi	r2,4098
 10000cac:	10acfe04 	addi	r2,r2,-19464
@@ -1965,12 +1721,8 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000cc4:	2084f03a 	xor	r2,r4,r2
 10000cc8:	e0bfd205 	stb	r2,-184(fp)
 10000ccc:	00001806 	br	10000d30 <KeyExpansion+0x248>
-			}
-			else{
-				for (byte = 0; byte < 4; byte++){					//temp for word 1-3
 10000cd0:	e03fd015 	stw	zero,-192(fp)
 10000cd4:	00001306 	br	10000d24 <KeyExpansion+0x23c>
-					temp[byte] = w[key][word-1][byte];
 10000cd8:	e0bfce17 	ldw	r2,-200(fp)
 10000cdc:	1004913a 	slli	r2,r2,4
 10000ce0:	e0ffff17 	ldw	r3,-4(fp)
@@ -1987,25 +1739,14 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000d0c:	e0bfd017 	ldw	r2,-192(fp)
 10000d10:	2085883a 	add	r2,r4,r2
 10000d14:	10c00005 	stb	r3,0(r2)
-				temp[1]	= temp[1]^((Rcon[key]<<8)>>24);
-				temp[2] = temp[2]^((Rcon[key]<<16)>>24);
-				temp[3] = temp[3]^((Rcon[key]<<24)>>24);			//xor with Rcon
-			}
-			else{
-				for (byte = 0; byte < 4; byte++){					//temp for word 1-3
 10000d18:	e0bfd017 	ldw	r2,-192(fp)
 10000d1c:	10800044 	addi	r2,r2,1
 10000d20:	e0bfd015 	stw	r2,-192(fp)
 10000d24:	e0bfd017 	ldw	r2,-192(fp)
 10000d28:	10800110 	cmplti	r2,r2,4
 10000d2c:	103fea1e 	bne	r2,zero,10000cd8 <__alt_data_end+0xf8000cd8>
-					temp[byte] = w[key][word-1][byte];
-				}
-			}
-			for (byte = 0; byte < 4; byte++){
 10000d30:	e03fd015 	stw	zero,-192(fp)
 10000d34:	00002206 	br	10000dc0 <KeyExpansion+0x2d8>
-				w[key][word][byte] = temp[byte]^w[key-1][word][byte]; //xor with temp
 10000d38:	e0bfce17 	ldw	r2,-200(fp)
 10000d3c:	1004913a 	slli	r2,r2,4
 10000d40:	e0ffff17 	ldw	r3,-4(fp)
@@ -2037,57 +1778,30 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000da8:	e0bfd017 	ldw	r2,-192(fp)
 10000dac:	1885883a 	add	r2,r3,r2
 10000db0:	11000005 	stb	r4,0(r2)
-			else{
-				for (byte = 0; byte < 4; byte++){					//temp for word 1-3
-					temp[byte] = w[key][word-1][byte];
-				}
-			}
-			for (byte = 0; byte < 4; byte++){
 10000db4:	e0bfd017 	ldw	r2,-192(fp)
 10000db8:	10800044 	addi	r2,r2,1
 10000dbc:	e0bfd015 	stw	r2,-192(fp)
 10000dc0:	e0bfd017 	ldw	r2,-192(fp)
 10000dc4:	10800110 	cmplti	r2,r2,4
 10000dc8:	103fdb1e 	bne	r2,zero,10000d38 <__alt_data_end+0xf8000d38>
-	int byte;
-	unsigned char temp[4];
-	unsigned char tempbyte;
-	unsigned char tempm[11][4][4];
-	for (key = 1; key < 11; key++){
-		for (word = 0; word < 4; word++){
 10000dcc:	e0bfcf17 	ldw	r2,-196(fp)
 10000dd0:	10800044 	addi	r2,r2,1
 10000dd4:	e0bfcf15 	stw	r2,-196(fp)
 10000dd8:	e0bfcf17 	ldw	r2,-196(fp)
 10000ddc:	10800110 	cmplti	r2,r2,4
 10000de0:	103f4a1e 	bne	r2,zero,10000b0c <__alt_data_end+0xf8000b0c>
-	int word;
-	int byte;
-	unsigned char temp[4];
-	unsigned char tempbyte;
-	unsigned char tempm[11][4][4];
-	for (key = 1; key < 11; key++){
 10000de4:	e0bfce17 	ldw	r2,-200(fp)
 10000de8:	10800044 	addi	r2,r2,1
 10000dec:	e0bfce15 	stw	r2,-200(fp)
 10000df0:	e0bfce17 	ldw	r2,-200(fp)
 10000df4:	108002d0 	cmplti	r2,r2,11
 10000df8:	103f421e 	bne	r2,zero,10000b04 <__alt_data_end+0xf8000b04>
-			for (byte = 0; byte < 4; byte++){
-				w[key][word][byte] = temp[byte]^w[key-1][word][byte]; //xor with temp
-			}
-		}
-	}
-	for (key = 0; key < 11; key ++){
 10000dfc:	e03fce15 	stw	zero,-200(fp)
 10000e00:	00002b06 	br	10000eb0 <KeyExpansion+0x3c8>
-		for (word = 0 ; word < 4; word ++){
 10000e04:	e03fcf15 	stw	zero,-196(fp)
 10000e08:	00002306 	br	10000e98 <KeyExpansion+0x3b0>
-			for (byte = 0; byte <4; byte ++){
 10000e0c:	e03fd015 	stw	zero,-192(fp)
 10000e10:	00001b06 	br	10000e80 <KeyExpansion+0x398>
-				tempm[key][byte][word] = w[key][word][byte];
 10000e14:	e0bfce17 	ldw	r2,-200(fp)
 10000e18:	1004913a 	slli	r2,r2,4
 10000e1c:	e0ffff17 	ldw	r3,-4(fp)
@@ -2112,57 +1826,30 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000e68:	2085883a 	add	r2,r4,r2
 10000e6c:	10800444 	addi	r2,r2,17
 10000e70:	10c00005 	stb	r3,0(r2)
-			}
-		}
-	}
-	for (key = 0; key < 11; key ++){
-		for (word = 0 ; word < 4; word ++){
-			for (byte = 0; byte <4; byte ++){
 10000e74:	e0bfd017 	ldw	r2,-192(fp)
 10000e78:	10800044 	addi	r2,r2,1
 10000e7c:	e0bfd015 	stw	r2,-192(fp)
 10000e80:	e0bfd017 	ldw	r2,-192(fp)
 10000e84:	10800110 	cmplti	r2,r2,4
 10000e88:	103fe21e 	bne	r2,zero,10000e14 <__alt_data_end+0xf8000e14>
-				w[key][word][byte] = temp[byte]^w[key-1][word][byte]; //xor with temp
-			}
-		}
-	}
-	for (key = 0; key < 11; key ++){
-		for (word = 0 ; word < 4; word ++){
 10000e8c:	e0bfcf17 	ldw	r2,-196(fp)
 10000e90:	10800044 	addi	r2,r2,1
 10000e94:	e0bfcf15 	stw	r2,-196(fp)
 10000e98:	e0bfcf17 	ldw	r2,-196(fp)
 10000e9c:	10800110 	cmplti	r2,r2,4
 10000ea0:	103fda1e 	bne	r2,zero,10000e0c <__alt_data_end+0xf8000e0c>
-			for (byte = 0; byte < 4; byte++){
-				w[key][word][byte] = temp[byte]^w[key-1][word][byte]; //xor with temp
-			}
-		}
-	}
-	for (key = 0; key < 11; key ++){
 10000ea4:	e0bfce17 	ldw	r2,-200(fp)
 10000ea8:	10800044 	addi	r2,r2,1
 10000eac:	e0bfce15 	stw	r2,-200(fp)
 10000eb0:	e0bfce17 	ldw	r2,-200(fp)
 10000eb4:	108002d0 	cmplti	r2,r2,11
 10000eb8:	103fd21e 	bne	r2,zero,10000e04 <__alt_data_end+0xf8000e04>
-			for (byte = 0; byte <4; byte ++){
-				tempm[key][byte][word] = w[key][word][byte];
-			}
-		}
-	}
-	for (key = 0; key < 11; key ++){
 10000ebc:	e03fce15 	stw	zero,-200(fp)
 10000ec0:	00002b06 	br	10000f70 <KeyExpansion+0x488>
-		for (word = 0 ; word < 4; word ++){
 10000ec4:	e03fcf15 	stw	zero,-196(fp)
 10000ec8:	00002306 	br	10000f58 <KeyExpansion+0x470>
-			for (byte = 0; byte <4; byte ++){
 10000ecc:	e03fd015 	stw	zero,-192(fp)
 10000ed0:	00001b06 	br	10000f40 <KeyExpansion+0x458>
-				w[key][word][byte] = tempm[key][word][byte];
 10000ed4:	e0bfce17 	ldw	r2,-200(fp)
 10000ed8:	1004913a 	slli	r2,r2,4
 10000edc:	e0ffff17 	ldw	r3,-4(fp)
@@ -2187,48 +1874,24 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000f28:	e0bfd017 	ldw	r2,-192(fp)
 10000f2c:	2085883a 	add	r2,r4,r2
 10000f30:	10c00005 	stb	r3,0(r2)
-			}
-		}
-	}
-	for (key = 0; key < 11; key ++){
-		for (word = 0 ; word < 4; word ++){
-			for (byte = 0; byte <4; byte ++){
 10000f34:	e0bfd017 	ldw	r2,-192(fp)
 10000f38:	10800044 	addi	r2,r2,1
 10000f3c:	e0bfd015 	stw	r2,-192(fp)
 10000f40:	e0bfd017 	ldw	r2,-192(fp)
 10000f44:	10800110 	cmplti	r2,r2,4
 10000f48:	103fe21e 	bne	r2,zero,10000ed4 <__alt_data_end+0xf8000ed4>
-				tempm[key][byte][word] = w[key][word][byte];
-			}
-		}
-	}
-	for (key = 0; key < 11; key ++){
-		for (word = 0 ; word < 4; word ++){
 10000f4c:	e0bfcf17 	ldw	r2,-196(fp)
 10000f50:	10800044 	addi	r2,r2,1
 10000f54:	e0bfcf15 	stw	r2,-196(fp)
 10000f58:	e0bfcf17 	ldw	r2,-196(fp)
 10000f5c:	10800110 	cmplti	r2,r2,4
 10000f60:	103fda1e 	bne	r2,zero,10000ecc <__alt_data_end+0xf8000ecc>
-			for (byte = 0; byte <4; byte ++){
-				tempm[key][byte][word] = w[key][word][byte];
-			}
-		}
-	}
-	for (key = 0; key < 11; key ++){
 10000f64:	e0bfce17 	ldw	r2,-200(fp)
 10000f68:	10800044 	addi	r2,r2,1
 10000f6c:	e0bfce15 	stw	r2,-200(fp)
 10000f70:	e0bfce17 	ldw	r2,-200(fp)
 10000f74:	108002d0 	cmplti	r2,r2,11
 10000f78:	103fd21e 	bne	r2,zero,10000ec4 <__alt_data_end+0xf8000ec4>
-		}
-	}
-//	for (key = 0; key < 11; key ++){
-//		printMatrix(w[key]);
-//	}
-}
 10000f7c:	0001883a 	nop
 10000f80:	e037883a 	mov	sp,fp
 10000f84:	df000017 	ldw	fp,0(sp)
@@ -2236,12 +1899,6 @@ void KeyExpansion(unsigned char(*w)[4][4])
 10000f8c:	f800283a 	ret
 
 10000f90 <encrypt>:
-
-
-// ece298dcece298dcece298dcece298dc
-// 000102030405060708090a0b0c0d0e0f
-void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int * msg_enc, unsigned int * key)
-{
 10000f90:	deffc704 	addi	sp,sp,-228
 10000f94:	dfc03815 	stw	ra,224(sp)
 10000f98:	df003715 	stw	fp,220(sp)
@@ -2250,18 +1907,10 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 10000fa4:	e17ffd15 	stw	r5,-12(fp)
 10000fa8:	e1bffe15 	stw	r6,-8(fp)
 10000fac:	e1ffff15 	stw	r7,-4(fp)
-	// Implement this function
-
-	int i,j,index;
-	unsigned char w[11][4][4];
-	unsigned char state[4][4];
-	for (i=0;i<4;i++) {
 10000fb0:	e03fc915 	stw	zero,-220(fp)
 10000fb4:	00004906 	br	100010dc <encrypt+0x14c>
-		for (j=0;j<4;j++) {
 10000fb8:	e03fca15 	stw	zero,-216(fp)
 10000fbc:	00004106 	br	100010c4 <encrypt+0x134>
-			index = i*2+j*8; // store vertically
 10000fc0:	e0bfca17 	ldw	r2,-216(fp)
 10000fc4:	1085883a 	add	r2,r2,r2
 10000fc8:	1085883a 	add	r2,r2,r2
@@ -2270,7 +1919,6 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 10000fd4:	1885883a 	add	r2,r3,r2
 10000fd8:	1085883a 	add	r2,r2,r2
 10000fdc:	e0bfcb15 	stw	r2,-212(fp)
-			w[0][j][i] = charsToHex(key_ascii[index],key_ascii[index+1]); // 16 * 8-bit
 10000fe0:	e0bfcb17 	ldw	r2,-212(fp)
 10000fe4:	e0fffd17 	ldw	r3,-12(fp)
 10000fe8:	1885883a 	add	r2,r3,r2
@@ -2298,7 +1946,6 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 10001040:	1885883a 	add	r2,r3,r2
 10001044:	10800304 	addi	r2,r2,12
 10001048:	11000005 	stb	r4,0(r2)
-			state[i][j] = charsToHex(msg_ascii[index],msg_ascii[index+1]); // 16 * 8-bit
 1000104c:	e0bfcb17 	ldw	r2,-212(fp)
 10001050:	e0fffc17 	ldw	r3,-16(fp)
 10001054:	1885883a 	add	r2,r3,r2
@@ -2326,71 +1973,40 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 100010ac:	1885883a 	add	r2,r3,r2
 100010b0:	10802f04 	addi	r2,r2,188
 100010b4:	11000005 	stb	r4,0(r2)
-
-	int i,j,index;
-	unsigned char w[11][4][4];
-	unsigned char state[4][4];
-	for (i=0;i<4;i++) {
-		for (j=0;j<4;j++) {
 100010b8:	e0bfca17 	ldw	r2,-216(fp)
 100010bc:	10800044 	addi	r2,r2,1
 100010c0:	e0bfca15 	stw	r2,-216(fp)
 100010c4:	e0bfca17 	ldw	r2,-216(fp)
 100010c8:	10800110 	cmplti	r2,r2,4
 100010cc:	103fbc1e 	bne	r2,zero,10000fc0 <__alt_data_end+0xf8000fc0>
-	// Implement this function
-
-	int i,j,index;
-	unsigned char w[11][4][4];
-	unsigned char state[4][4];
-	for (i=0;i<4;i++) {
 100010d0:	e0bfc917 	ldw	r2,-220(fp)
 100010d4:	10800044 	addi	r2,r2,1
 100010d8:	e0bfc915 	stw	r2,-220(fp)
 100010dc:	e0bfc917 	ldw	r2,-220(fp)
 100010e0:	10800110 	cmplti	r2,r2,4
 100010e4:	103fb41e 	bne	r2,zero,10000fb8 <__alt_data_end+0xf8000fb8>
-			w[0][j][i] = charsToHex(key_ascii[index],key_ascii[index+1]); // 16 * 8-bit
-			state[i][j] = charsToHex(msg_ascii[index],msg_ascii[index+1]); // 16 * 8-bit
-		}
-	}
-
-	printMatrix(state);
 100010e8:	e0bff804 	addi	r2,fp,-32
 100010ec:	1009883a 	mov	r4,r2
 100010f0:	00003900 	call	10000390 <printMatrix>
-	KeyExpansion(w);
 100010f4:	e0bfcc04 	addi	r2,fp,-208
 100010f8:	1009883a 	mov	r4,r2
 100010fc:	0000ae80 	call	10000ae8 <KeyExpansion>
-
-
-	AddRoundKey(state, w[0]);
 10001100:	e0ffcc04 	addi	r3,fp,-208
 10001104:	e0bff804 	addi	r2,fp,-32
 10001108:	180b883a 	mov	r5,r3
 1000110c:	1009883a 	mov	r4,r2
 10001110:	00004780 	call	10000478 <AddRoundKey>
-
-	for(i=0;i<9;i++){
 10001114:	e03fc915 	stw	zero,-220(fp)
 10001118:	00001506 	br	10001170 <encrypt+0x1e0>
-		// printf("State at start of round# %d\n", i+1);
-		// printMatrix(state);
-
-		SubBytes(state);
 1000111c:	e0bff804 	addi	r2,fp,-32
 10001120:	1009883a 	mov	r4,r2
 10001124:	00005540 	call	10000554 <SubBytes>
-		ShiftRows(state);
 10001128:	e0bff804 	addi	r2,fp,-32
 1000112c:	1009883a 	mov	r4,r2
 10001130:	00006140 	call	10000614 <ShiftRows>
-		MixColumns(state);
 10001134:	e0bff804 	addi	r2,fp,-32
 10001138:	1009883a 	mov	r4,r2
 1000113c:	00008340 	call	10000834 <MixColumns>
-		AddRoundKey(state, w[i+1]);
 10001140:	e0bfc917 	ldw	r2,-220(fp)
 10001144:	10800044 	addi	r2,r2,1
 10001148:	e0ffcc04 	addi	r3,fp,-208
@@ -2400,45 +2016,26 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 10001158:	180b883a 	mov	r5,r3
 1000115c:	1009883a 	mov	r4,r2
 10001160:	00004780 	call	10000478 <AddRoundKey>
-	KeyExpansion(w);
-
-
-	AddRoundKey(state, w[0]);
-
-	for(i=0;i<9;i++){
 10001164:	e0bfc917 	ldw	r2,-220(fp)
 10001168:	10800044 	addi	r2,r2,1
 1000116c:	e0bfc915 	stw	r2,-220(fp)
 10001170:	e0bfc917 	ldw	r2,-220(fp)
 10001174:	10800250 	cmplti	r2,r2,9
 10001178:	103fe81e 	bne	r2,zero,1000111c <__alt_data_end+0xf800111c>
-		MixColumns(state);
-		AddRoundKey(state, w[i+1]);
-
-	}
-
-	SubBytes(state);
 1000117c:	e0bff804 	addi	r2,fp,-32
 10001180:	1009883a 	mov	r4,r2
 10001184:	00005540 	call	10000554 <SubBytes>
-	ShiftRows(state);
 10001188:	e0bff804 	addi	r2,fp,-32
 1000118c:	1009883a 	mov	r4,r2
 10001190:	00006140 	call	10000614 <ShiftRows>
-	AddRoundKey(state, w[10]);
 10001194:	e0bfcc04 	addi	r2,fp,-208
 10001198:	10c02804 	addi	r3,r2,160
 1000119c:	e0bff804 	addi	r2,fp,-32
 100011a0:	180b883a 	mov	r5,r3
 100011a4:	1009883a 	mov	r4,r2
 100011a8:	00004780 	call	10000478 <AddRoundKey>
-
-	// printf("FINAL_STATE");
-	// printMatrix(state);
-	for (i=0;i<4;i++){
 100011ac:	e03fc915 	stw	zero,-220(fp)
 100011b0:	00004506 	br	100012c8 <encrypt+0x338>
-		msg_enc[i] = (state[0][i]<<24) ^ (state[1][i]<<16) ^ (state[2][i]<<8) ^ (state[3][i]);
 100011b4:	e0bfc917 	ldw	r2,-220(fp)
 100011b8:	1085883a 	add	r2,r2,r2
 100011bc:	1085883a 	add	r2,r2,r2
@@ -2472,7 +2069,6 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 1000122c:	18c03fcc 	andi	r3,r3,255
 10001230:	20c6f03a 	xor	r3,r4,r3
 10001234:	10c00015 	stw	r3,0(r2)
-		key[i] = (w[0][0][i]<<24) ^ (w[0][1][i]<<16) ^ (w[0][2][i]<<8) ^ (w[0][3][i]);
 10001238:	e0bfc917 	ldw	r2,-220(fp)
 1000123c:	1085883a 	add	r2,r2,r2
 10001240:	1085883a 	add	r2,r2,r2
@@ -2506,22 +2102,12 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 100012b0:	18c03fcc 	andi	r3,r3,255
 100012b4:	20c6f03a 	xor	r3,r4,r3
 100012b8:	10c00015 	stw	r3,0(r2)
-	ShiftRows(state);
-	AddRoundKey(state, w[10]);
-
-	// printf("FINAL_STATE");
-	// printMatrix(state);
-	for (i=0;i<4;i++){
 100012bc:	e0bfc917 	ldw	r2,-220(fp)
 100012c0:	10800044 	addi	r2,r2,1
 100012c4:	e0bfc915 	stw	r2,-220(fp)
 100012c8:	e0bfc917 	ldw	r2,-220(fp)
 100012cc:	10800110 	cmplti	r2,r2,4
 100012d0:	103fb81e 	bne	r2,zero,100011b4 <__alt_data_end+0xf80011b4>
-		msg_enc[i] = (state[0][i]<<24) ^ (state[1][i]<<16) ^ (state[2][i]<<8) ^ (state[3][i]);
-		key[i] = (w[0][0][i]<<24) ^ (w[0][1][i]<<16) ^ (w[0][2][i]<<8) ^ (w[0][3][i]);
-	}
-}
 100012d4:	0001883a 	nop
 100012d8:	e037883a 	mov	sp,fp
 100012dc:	dfc00117 	ldw	ra,4(sp)
@@ -2530,107 +2116,82 @@ void encrypt(unsigned char * msg_ascii, unsigned char * key_ascii, unsigned int 
 100012e8:	f800283a 	ret
 
 100012ec <decrypt>:
- *  Input:  msg_enc - Pointer to 4x 32-bit int array that contains the encrypted message
- *              key - Pointer to 4x 32-bit int array that contains the input key
- *  Output: msg_dec - Pointer to 4x 32-bit int array that contains the decrypted message
- */
-void decrypt(unsigned int * msg_enc, unsigned int * msg_dec, unsigned int * key)
-{
 100012ec:	defffc04 	addi	sp,sp,-16
 100012f0:	df000315 	stw	fp,12(sp)
 100012f4:	df000304 	addi	fp,sp,12
 100012f8:	e13ffd15 	stw	r4,-12(fp)
 100012fc:	e17ffe15 	stw	r5,-8(fp)
 10001300:	e1bfff15 	stw	r6,-4(fp)
-	// Implement this function
-	// Send the 128-bit Key (Split into 4* 32-bit)
-	AES_PTR[0] = key[0];
 10001304:	d0a00017 	ldw	r2,-32768(gp)
 10001308:	e0ffff17 	ldw	r3,-4(fp)
 1000130c:	18c00017 	ldw	r3,0(r3)
 10001310:	10c00015 	stw	r3,0(r2)
-	AES_PTR[1] = key[1];
 10001314:	d0a00017 	ldw	r2,-32768(gp)
 10001318:	10800104 	addi	r2,r2,4
 1000131c:	e0ffff17 	ldw	r3,-4(fp)
 10001320:	18c00117 	ldw	r3,4(r3)
 10001324:	10c00015 	stw	r3,0(r2)
-	AES_PTR[2] = key[2];
 10001328:	d0a00017 	ldw	r2,-32768(gp)
 1000132c:	10800204 	addi	r2,r2,8
 10001330:	e0ffff17 	ldw	r3,-4(fp)
 10001334:	18c00217 	ldw	r3,8(r3)
 10001338:	10c00015 	stw	r3,0(r2)
-	AES_PTR[3] = key[3];
 1000133c:	d0a00017 	ldw	r2,-32768(gp)
 10001340:	10800304 	addi	r2,r2,12
 10001344:	e0ffff17 	ldw	r3,-4(fp)
 10001348:	18c00317 	ldw	r3,12(r3)
 1000134c:	10c00015 	stw	r3,0(r2)
-	AES_PTR[4] = msg_enc[0];
 10001350:	d0a00017 	ldw	r2,-32768(gp)
 10001354:	10800404 	addi	r2,r2,16
 10001358:	e0fffd17 	ldw	r3,-12(fp)
 1000135c:	18c00017 	ldw	r3,0(r3)
 10001360:	10c00015 	stw	r3,0(r2)
-	AES_PTR[5] = msg_enc[1];
 10001364:	d0a00017 	ldw	r2,-32768(gp)
 10001368:	10800504 	addi	r2,r2,20
 1000136c:	e0fffd17 	ldw	r3,-12(fp)
 10001370:	18c00117 	ldw	r3,4(r3)
 10001374:	10c00015 	stw	r3,0(r2)
-	AES_PTR[6] = msg_enc[2];
 10001378:	d0a00017 	ldw	r2,-32768(gp)
 1000137c:	10800604 	addi	r2,r2,24
 10001380:	e0fffd17 	ldw	r3,-12(fp)
 10001384:	18c00217 	ldw	r3,8(r3)
 10001388:	10c00015 	stw	r3,0(r2)
-	AES_PTR[7] = msg_enc[3];
 1000138c:	d0a00017 	ldw	r2,-32768(gp)
 10001390:	10800704 	addi	r2,r2,28
 10001394:	e0fffd17 	ldw	r3,-12(fp)
 10001398:	18c00317 	ldw	r3,12(r3)
 1000139c:	10c00015 	stw	r3,0(r2)
-
-	AES_PTR[14] = 1;
 100013a0:	d0a00017 	ldw	r2,-32768(gp)
 100013a4:	10800e04 	addi	r2,r2,56
 100013a8:	00c00044 	movi	r3,1
 100013ac:	10c00015 	stw	r3,0(r2)
-	while(AES_PTR[15] == 0){}
 100013b0:	0001883a 	nop
 100013b4:	d0a00017 	ldw	r2,-32768(gp)
 100013b8:	10800f04 	addi	r2,r2,60
 100013bc:	10800017 	ldw	r2,0(r2)
 100013c0:	103ffc26 	beq	r2,zero,100013b4 <__alt_data_end+0xf80013b4>
-	msg_dec[0] = AES_PTR[8];
 100013c4:	d0a00017 	ldw	r2,-32768(gp)
 100013c8:	10c00817 	ldw	r3,32(r2)
 100013cc:	e0bffe17 	ldw	r2,-8(fp)
 100013d0:	10c00015 	stw	r3,0(r2)
-	msg_dec[1] = AES_PTR[9];
 100013d4:	e0bffe17 	ldw	r2,-8(fp)
 100013d8:	10800104 	addi	r2,r2,4
 100013dc:	d0e00017 	ldw	r3,-32768(gp)
 100013e0:	18c00917 	ldw	r3,36(r3)
 100013e4:	10c00015 	stw	r3,0(r2)
-	msg_dec[2] = AES_PTR[10];
 100013e8:	e0bffe17 	ldw	r2,-8(fp)
 100013ec:	10800204 	addi	r2,r2,8
 100013f0:	d0e00017 	ldw	r3,-32768(gp)
 100013f4:	18c00a17 	ldw	r3,40(r3)
 100013f8:	10c00015 	stw	r3,0(r2)
-	msg_dec[3] = AES_PTR[11];
 100013fc:	e0bffe17 	ldw	r2,-8(fp)
 10001400:	10800304 	addi	r2,r2,12
 10001404:	d0e00017 	ldw	r3,-32768(gp)
 10001408:	18c00b17 	ldw	r3,44(r3)
 1000140c:	10c00015 	stw	r3,0(r2)
-	AES_PTR[14] = 0;
 10001410:	d0a00017 	ldw	r2,-32768(gp)
 10001414:	10800e04 	addi	r2,r2,56
 10001418:	10000015 	stw	zero,0(r2)
-}
 1000141c:	0001883a 	nop
 10001420:	e037883a 	mov	sp,fp
 10001424:	df000017 	ldw	fp,0(sp)
@@ -2638,90 +2199,58 @@ void decrypt(unsigned int * msg_enc, unsigned int * msg_dec, unsigned int * key)
 1000142c:	f800283a 	ret
 
 10001430 <main>:
-/** main
- *  Allows the user to enter the message, key, and select execution mode
- *
- */
-int main()
-{
 10001430:	deffd804 	addi	sp,sp,-160
 10001434:	dfc02715 	stw	ra,156(sp)
 10001438:	df002615 	stw	fp,152(sp)
 1000143c:	df002604 	addi	fp,sp,152
-	unsigned int key[4];
-	unsigned int msg_enc[4];
-	unsigned int msg_dec[4];
-
-
-	AES_PTR[10] = 0xDEADBEEF;
 10001440:	d0a00017 	ldw	r2,-32768(gp)
 10001444:	10c00a04 	addi	r3,r2,40
 10001448:	00b7abb4 	movhi	r2,57006
 1000144c:	10afbbc4 	addi	r2,r2,-16657
 10001450:	18800015 	stw	r2,0(r3)
-	if (AES_PTR[10] != 0xDEADBEEF)
 10001454:	d0a00017 	ldw	r2,-32768(gp)
 10001458:	10800a04 	addi	r2,r2,40
 1000145c:	10c00017 	ldw	r3,0(r2)
 10001460:	00b7abb4 	movhi	r2,57006
 10001464:	10afbbc4 	addi	r2,r2,-16657
 10001468:	18800426 	beq	r3,r2,1000147c <main+0x4c>
-		printf("Error !");
 1000146c:	010400b4 	movhi	r4,4098
 10001470:	21296904 	addi	r4,r4,-23132
 10001474:	00026400 	call	10002640 <printf>
 10001478:	00000306 	br	10001488 <main+0x58>
-	else
-		printf("No Error for Week1 !");
 1000147c:	010400b4 	movhi	r4,4098
 10001480:	21296b04 	addi	r4,r4,-23124
 10001484:	00026400 	call	10002640 <printf>
-
-
-	printf("Select execution mode: 0 for testing, 1 for benchmarking: ");
 10001488:	010400b4 	movhi	r4,4098
 1000148c:	21297104 	addi	r4,r4,-23100
 10001490:	00026400 	call	10002640 <printf>
-	scanf("%d", &run_mode);
 10001494:	d1686104 	addi	r5,gp,-24188
 10001498:	010400b4 	movhi	r4,4098
 1000149c:	21298004 	addi	r4,r4,-23040
 100014a0:	00027700 	call	10002770 <scanf>
-
-	if (run_mode == 0) {
 100014a4:	d0a86117 	ldw	r2,-24188(gp)
 100014a8:	1000561e 	bne	r2,zero,10001604 <main+0x1d4>
-		// Continuously Perform Encryption and Decryption
-		while (1) {
-			int i = 0;
 100014ac:	e03fda15 	stw	zero,-152(fp)
-			printf("\nEnter Message:\n");
 100014b0:	010400b4 	movhi	r4,4098
 100014b4:	21298104 	addi	r4,r4,-23036
 100014b8:	000275c0 	call	1000275c <puts>
-			scanf("%s", msg_ascii);
 100014bc:	e0bfe304 	addi	r2,fp,-116
 100014c0:	100b883a 	mov	r5,r2
 100014c4:	010400b4 	movhi	r4,4098
 100014c8:	21298504 	addi	r4,r4,-23020
 100014cc:	00027700 	call	10002770 <scanf>
-			printf("\n");
 100014d0:	01000284 	movi	r4,10
 100014d4:	00026840 	call	10002684 <putchar>
-			printf("\nEnter Key:\n");
 100014d8:	010400b4 	movhi	r4,4098
 100014dc:	21298604 	addi	r4,r4,-23016
 100014e0:	000275c0 	call	1000275c <puts>
-			scanf("%s", key_ascii);
 100014e4:	e0bfeb44 	addi	r2,fp,-83
 100014e8:	100b883a 	mov	r5,r2
 100014ec:	010400b4 	movhi	r4,4098
 100014f0:	21298504 	addi	r4,r4,-23020
 100014f4:	00027700 	call	10002770 <scanf>
-			printf("\n");
 100014f8:	01000284 	movi	r4,10
 100014fc:	00026840 	call	10002684 <putchar>
-			encrypt(msg_ascii, key_ascii, msg_enc, key);
 10001500:	e17ff404 	addi	r5,fp,-48
 10001504:	e13ff804 	addi	r4,fp,-32
 10001508:	e0ffeb44 	addi	r3,fp,-83
@@ -2731,14 +2260,11 @@ int main()
 10001518:	180b883a 	mov	r5,r3
 1000151c:	1009883a 	mov	r4,r2
 10001520:	0000f900 	call	10000f90 <encrypt>
-			printf("\nEncrpted message is: \n");
 10001524:	010400b4 	movhi	r4,4098
 10001528:	21298904 	addi	r4,r4,-23004
 1000152c:	000275c0 	call	1000275c <puts>
-			for(i = 0; i < 4; i++){
 10001530:	e03fda15 	stw	zero,-152(fp)
 10001534:	00000e06 	br	10001570 <main+0x140>
-				printf("%08x", msg_enc[i]);
 10001538:	e0bfda17 	ldw	r2,-152(fp)
 1000153c:	1085883a 	add	r2,r2,r2
 10001540:	1085883a 	add	r2,r2,r2
@@ -2750,24 +2276,14 @@ int main()
 10001558:	010400b4 	movhi	r4,4098
 1000155c:	21298f04 	addi	r4,r4,-22980
 10001560:	00026400 	call	10002640 <printf>
-			printf("\nEnter Key:\n");
-			scanf("%s", key_ascii);
-			printf("\n");
-			encrypt(msg_ascii, key_ascii, msg_enc, key);
-			printf("\nEncrpted message is: \n");
-			for(i = 0; i < 4; i++){
 10001564:	e0bfda17 	ldw	r2,-152(fp)
 10001568:	10800044 	addi	r2,r2,1
 1000156c:	e0bfda15 	stw	r2,-152(fp)
 10001570:	e0bfda17 	ldw	r2,-152(fp)
 10001574:	10800110 	cmplti	r2,r2,4
 10001578:	103fef1e 	bne	r2,zero,10001538 <__alt_data_end+0xf8001538>
-				printf("%08x", msg_enc[i]);
-			}
-			printf("\n");
 1000157c:	01000284 	movi	r4,10
 10001580:	00026840 	call	10002684 <putchar>
-			decrypt(msg_enc, msg_dec, key);
 10001584:	e13ff404 	addi	r4,fp,-48
 10001588:	e0fffc04 	addi	r3,fp,-16
 1000158c:	e0bff804 	addi	r2,fp,-32
@@ -2775,14 +2291,11 @@ int main()
 10001594:	180b883a 	mov	r5,r3
 10001598:	1009883a 	mov	r4,r2
 1000159c:	00012ec0 	call	100012ec <decrypt>
-			printf("\nDecrypted message is: \n");
 100015a0:	010400b4 	movhi	r4,4098
 100015a4:	21299104 	addi	r4,r4,-22972
 100015a8:	000275c0 	call	1000275c <puts>
-			for(i = 0; i < 4; i++){
 100015ac:	e03fda15 	stw	zero,-152(fp)
 100015b0:	00000e06 	br	100015ec <main+0x1bc>
-				printf("%08x", msg_dec[i]);
 100015b4:	e0bfda17 	ldw	r2,-152(fp)
 100015b8:	1085883a 	add	r2,r2,r2
 100015bc:	1085883a 	add	r2,r2,r2
@@ -2794,72 +2307,40 @@ int main()
 100015d4:	010400b4 	movhi	r4,4098
 100015d8:	21298f04 	addi	r4,r4,-22980
 100015dc:	00026400 	call	10002640 <printf>
-				printf("%08x", msg_enc[i]);
-			}
-			printf("\n");
-			decrypt(msg_enc, msg_dec, key);
-			printf("\nDecrypted message is: \n");
-			for(i = 0; i < 4; i++){
 100015e0:	e0bfda17 	ldw	r2,-152(fp)
 100015e4:	10800044 	addi	r2,r2,1
 100015e8:	e0bfda15 	stw	r2,-152(fp)
 100015ec:	e0bfda17 	ldw	r2,-152(fp)
 100015f0:	10800110 	cmplti	r2,r2,4
 100015f4:	103fef1e 	bne	r2,zero,100015b4 <__alt_data_end+0xf80015b4>
-				printf("%08x", msg_dec[i]);
-			}
-			printf("\n");
 100015f8:	01000284 	movi	r4,10
 100015fc:	00026840 	call	10002684 <putchar>
-		}
 10001600:	003faa06 	br	100014ac <__alt_data_end+0xf80014ac>
-	}
-	else {
-		// Run the Benchmark
-		int i = 0;
 10001604:	e03fdb15 	stw	zero,-148(fp)
-		int size_KB = 2;
 10001608:	00800084 	movi	r2,2
 1000160c:	e0bfdc15 	stw	r2,-144(fp)
-		// Choose a random Plaintext and Key
-		for (i = 0; i < 32; i++) {
 10001610:	e03fdb15 	stw	zero,-148(fp)
 10001614:	00000d06 	br	1000164c <main+0x21c>
-			msg_ascii[i] = 'a';
 10001618:	e0ffe304 	addi	r3,fp,-116
 1000161c:	e0bfdb17 	ldw	r2,-148(fp)
 10001620:	1885883a 	add	r2,r3,r2
 10001624:	00c01844 	movi	r3,97
 10001628:	10c00005 	stb	r3,0(r2)
-			key_ascii[i] = 'b';
 1000162c:	e0ffeb44 	addi	r3,fp,-83
 10001630:	e0bfdb17 	ldw	r2,-148(fp)
 10001634:	1885883a 	add	r2,r3,r2
 10001638:	00c01884 	movi	r3,98
 1000163c:	10c00005 	stb	r3,0(r2)
-	else {
-		// Run the Benchmark
-		int i = 0;
-		int size_KB = 2;
-		// Choose a random Plaintext and Key
-		for (i = 0; i < 32; i++) {
 10001640:	e0bfdb17 	ldw	r2,-148(fp)
 10001644:	10800044 	addi	r2,r2,1
 10001648:	e0bfdb15 	stw	r2,-148(fp)
 1000164c:	e0bfdb17 	ldw	r2,-148(fp)
 10001650:	10800810 	cmplti	r2,r2,32
 10001654:	103ff01e 	bne	r2,zero,10001618 <__alt_data_end+0xf8001618>
-			msg_ascii[i] = 'a';
-			key_ascii[i] = 'b';
-		}
-		// Run Encryption
-		clock_t begin = clock();
 10001658:	00025c40 	call	100025c4 <clock>
 1000165c:	e0bfdd15 	stw	r2,-140(fp)
-		for (i = 0; i < size_KB * 64; i++)
 10001660:	e03fdb15 	stw	zero,-148(fp)
 10001664:	00000c06 	br	10001698 <main+0x268>
-			encrypt(msg_ascii, key_ascii, msg_enc, key);
 10001668:	e17ff404 	addi	r5,fp,-48
 1000166c:	e13ff804 	addi	r4,fp,-32
 10001670:	e0ffeb44 	addi	r3,fp,-83
@@ -2869,12 +2350,6 @@ int main()
 10001680:	180b883a 	mov	r5,r3
 10001684:	1009883a 	mov	r4,r2
 10001688:	0000f900 	call	10000f90 <encrypt>
-			msg_ascii[i] = 'a';
-			key_ascii[i] = 'b';
-		}
-		// Run Encryption
-		clock_t begin = clock();
-		for (i = 0; i < size_KB * 64; i++)
 1000168c:	e0bfdb17 	ldw	r2,-148(fp)
 10001690:	10800044 	addi	r2,r2,1
 10001694:	e0bfdb15 	stw	r2,-148(fp)
@@ -2882,11 +2357,8 @@ int main()
 1000169c:	100491ba 	slli	r2,r2,6
 100016a0:	e0ffdb17 	ldw	r3,-148(fp)
 100016a4:	18bff016 	blt	r3,r2,10001668 <__alt_data_end+0xf8001668>
-			encrypt(msg_ascii, key_ascii, msg_enc, key);
-		clock_t end = clock();
 100016a8:	00025c40 	call	100025c4 <clock>
 100016ac:	e0bfde15 	stw	r2,-136(fp)
-		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 100016b0:	e0ffde17 	ldw	r3,-136(fp)
 100016b4:	e0bfdd17 	ldw	r2,-140(fp)
 100016b8:	1885c83a 	sub	r2,r3,r2
@@ -2904,7 +2376,6 @@ int main()
 100016e8:	180b883a 	mov	r5,r3
 100016ec:	e13fdf15 	stw	r4,-132(fp)
 100016f0:	e17fe015 	stw	r5,-128(fp)
-		double speed = size_KB / time_spent;
 100016f4:	e13fdc17 	ldw	r4,-144(fp)
 100016f8:	00022280 	call	10002228 <__floatsidf>
 100016fc:	1011883a 	mov	r8,r2
@@ -2918,20 +2389,15 @@ int main()
 1000171c:	180b883a 	mov	r5,r3
 10001720:	e13fe115 	stw	r4,-124(fp)
 10001724:	e17fe215 	stw	r5,-120(fp)
-		printf("Software Encryption Speed: %f KB/s \n", speed);
 10001728:	e17fe117 	ldw	r5,-124(fp)
 1000172c:	e1bfe217 	ldw	r6,-120(fp)
 10001730:	010400b4 	movhi	r4,4098
 10001734:	21299704 	addi	r4,r4,-22948
 10001738:	00026400 	call	10002640 <printf>
-		// Run Decryption
-		begin = clock();
 1000173c:	00025c40 	call	100025c4 <clock>
 10001740:	e0bfdd15 	stw	r2,-140(fp)
-		for (i = 0; i < size_KB * 64; i++)
 10001744:	e03fdb15 	stw	zero,-148(fp)
 10001748:	00000a06 	br	10001774 <main+0x344>
-			decrypt(msg_enc, msg_dec, key);
 1000174c:	e13ff404 	addi	r4,fp,-48
 10001750:	e0fffc04 	addi	r3,fp,-16
 10001754:	e0bff804 	addi	r2,fp,-32
@@ -2939,12 +2405,6 @@ int main()
 1000175c:	180b883a 	mov	r5,r3
 10001760:	1009883a 	mov	r4,r2
 10001764:	00012ec0 	call	100012ec <decrypt>
-		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
-		double speed = size_KB / time_spent;
-		printf("Software Encryption Speed: %f KB/s \n", speed);
-		// Run Decryption
-		begin = clock();
-		for (i = 0; i < size_KB * 64; i++)
 10001768:	e0bfdb17 	ldw	r2,-148(fp)
 1000176c:	10800044 	addi	r2,r2,1
 10001770:	e0bfdb15 	stw	r2,-148(fp)
@@ -2952,11 +2412,8 @@ int main()
 10001778:	100491ba 	slli	r2,r2,6
 1000177c:	e0ffdb17 	ldw	r3,-148(fp)
 10001780:	18bff216 	blt	r3,r2,1000174c <__alt_data_end+0xf800174c>
-			decrypt(msg_enc, msg_dec, key);
-		end = clock();
 10001784:	00025c40 	call	100025c4 <clock>
 10001788:	e0bfde15 	stw	r2,-136(fp)
-		time_spent = (double)(end - begin) / CLOCKS_PER_SEC;
 1000178c:	e0ffde17 	ldw	r3,-136(fp)
 10001790:	e0bfdd17 	ldw	r2,-140(fp)
 10001794:	1885c83a 	sub	r2,r3,r2
@@ -2974,7 +2431,6 @@ int main()
 100017c4:	180b883a 	mov	r5,r3
 100017c8:	e13fdf15 	stw	r4,-132(fp)
 100017cc:	e17fe015 	stw	r5,-128(fp)
-		speed = size_KB / time_spent;
 100017d0:	e13fdc17 	ldw	r4,-144(fp)
 100017d4:	00022280 	call	10002228 <__floatsidf>
 100017d8:	1011883a 	mov	r8,r2
@@ -2988,16 +2444,12 @@ int main()
 100017f8:	180b883a 	mov	r5,r3
 100017fc:	e13fe115 	stw	r4,-124(fp)
 10001800:	e17fe215 	stw	r5,-120(fp)
-		printf("Hardware Encryption Speed: %f KB/s \n", speed);
 10001804:	e17fe117 	ldw	r5,-124(fp)
 10001808:	e1bfe217 	ldw	r6,-120(fp)
 1000180c:	010400b4 	movhi	r4,4098
 10001810:	2129a104 	addi	r4,r4,-22908
 10001814:	00026400 	call	10002640 <printf>
-	}
-	return 0;
 10001818:	0005883a 	mov	r2,zero
-}
 1000181c:	e037883a 	mov	sp,fp
 10001820:	dfc00117 	ldw	ra,4(sp)
 10001824:	df000017 	ldw	fp,0(sp)
@@ -26416,27 +25868,16 @@ int ALT_ISATTY (int file)
 10017e54:	f800283a 	ret
 
 10017e58 <alt_load_section>:
- */
-
-static void ALT_INLINE alt_load_section (alt_u32* from, 
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
 10017e58:	defffc04 	addi	sp,sp,-16
 10017e5c:	df000315 	stw	fp,12(sp)
 10017e60:	df000304 	addi	fp,sp,12
 10017e64:	e13ffd15 	stw	r4,-12(fp)
 10017e68:	e17ffe15 	stw	r5,-8(fp)
 10017e6c:	e1bfff15 	stw	r6,-4(fp)
-  if (to != from)
 10017e70:	e0fffe17 	ldw	r3,-8(fp)
 10017e74:	e0bffd17 	ldw	r2,-12(fp)
 10017e78:	18800c26 	beq	r3,r2,10017eac <alt_load_section+0x54>
-  {
-    while( to != end )
 10017e7c:	00000806 	br	10017ea0 <alt_load_section+0x48>
-    {
-      *to++ = *from++;
 10017e80:	e0bffe17 	ldw	r2,-8(fp)
 10017e84:	10c00104 	addi	r3,r2,4
 10017e88:	e0fffe15 	stw	r3,-8(fp)
@@ -26445,20 +25886,9 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
 10017e94:	e13ffd15 	stw	r4,-12(fp)
 10017e98:	18c00017 	ldw	r3,0(r3)
 10017e9c:	10c00015 	stw	r3,0(r2)
-                                         alt_u32* to, 
-                                         alt_u32* end)
-{
-  if (to != from)
-  {
-    while( to != end )
 10017ea0:	e0fffe17 	ldw	r3,-8(fp)
 10017ea4:	e0bfff17 	ldw	r2,-4(fp)
 10017ea8:	18bff51e 	bne	r3,r2,10017e80 <__alt_data_end+0xf8017e80>
-    {
-      *to++ = *from++;
-    }
-  }
-}
 10017eac:	0001883a 	nop
 10017eb0:	e037883a 	mov	sp,fp
 10017eb4:	df000017 	ldw	fp,0(sp)
@@ -26466,21 +25896,10 @@ static void ALT_INLINE alt_load_section (alt_u32* from,
 10017ebc:	f800283a 	ret
 
 10017ec0 <alt_load>:
- * there is no bootloader, so this application is responsible for loading to
- * RAM any sections that are required.
- */  
-
-void alt_load (void)
-{
 10017ec0:	defffe04 	addi	sp,sp,-8
 10017ec4:	dfc00115 	stw	ra,4(sp)
 10017ec8:	df000015 	stw	fp,0(sp)
 10017ecc:	d839883a 	mov	fp,sp
-  /* 
-   * Copy the .rwdata section. 
-   */
-
-  alt_load_section (&__flash_rwdata_start, 
 10017ed0:	018400b4 	movhi	r6,4098
 10017ed4:	31b3cc04 	addi	r6,r6,-12496
 10017ed8:	014400b4 	movhi	r5,4098
@@ -26488,12 +25907,6 @@ void alt_load (void)
 10017ee0:	010400b4 	movhi	r4,4098
 10017ee4:	2133cc04 	addi	r4,r4,-12496
 10017ee8:	0017e580 	call	10017e58 <alt_load_section>
-
-  /*
-   * Copy the exception handler.
-   */
-
-  alt_load_section (&__flash_exceptions_start, 
 10017eec:	01840034 	movhi	r6,4096
 10017ef0:	31808c04 	addi	r6,r6,560
 10017ef4:	01440034 	movhi	r5,4096
@@ -26501,12 +25914,6 @@ void alt_load (void)
 10017efc:	01040034 	movhi	r4,4096
 10017f00:	21000804 	addi	r4,r4,32
 10017f04:	0017e580 	call	10017e58 <alt_load_section>
-
-  /*
-   * Copy the .rodata section.
-   */
-
-  alt_load_section (&__flash_rodata_start, 
 10017f08:	018400b4 	movhi	r6,4098
 10017f0c:	31ab7e04 	addi	r6,r6,-21000
 10017f10:	014400b4 	movhi	r5,4098
@@ -26514,16 +25921,8 @@ void alt_load (void)
 10017f18:	010400b4 	movhi	r4,4098
 10017f1c:	2128e404 	addi	r4,r4,-23664
 10017f20:	0017e580 	call	10017e58 <alt_load_section>
-  
-  /*
-   * Now ensure that the caches are in synch.
-   */
-  
-  alt_dcache_flush_all();
 10017f24:	00192d80 	call	100192d8 <alt_dcache_flush_all>
-  alt_icache_flush_all();
 10017f28:	00194980 	call	10019498 <alt_icache_flush_all>
-}
 10017f2c:	0001883a 	nop
 10017f30:	e037883a 	mov	sp,fp
 10017f34:	dfc00117 	ldw	ra,4(sp)
@@ -26740,17 +26139,10 @@ void alt_main (void)
 100180d4:	001a0100 	call	1001a010 <exit>
 
 100180d8 <__malloc_lock>:
- * configuration is single threaded, so there is nothing to do here. Note that 
- * this requires that malloc is never called by an interrupt service routine.
- */
-
-void __malloc_lock ( struct _reent *_r )
-{
 100180d8:	defffe04 	addi	sp,sp,-8
 100180dc:	df000115 	stw	fp,4(sp)
 100180e0:	df000104 	addi	fp,sp,4
 100180e4:	e13fff15 	stw	r4,-4(fp)
-}
 100180e8:	0001883a 	nop
 100180ec:	e037883a 	mov	sp,fp
 100180f0:	df000017 	ldw	fp,0(sp)
@@ -26758,17 +26150,10 @@ void __malloc_lock ( struct _reent *_r )
 100180f8:	f800283a 	ret
 
 100180fc <__malloc_unlock>:
-/*
- *
- */
-
-void __malloc_unlock ( struct _reent *_r )
-{
 100180fc:	defffe04 	addi	sp,sp,-8
 10018100:	df000115 	stw	fp,4(sp)
 10018104:	df000104 	addi	fp,sp,4
 10018108:	e13fff15 	stw	r4,-4(fp)
-}
 1001810c:	0001883a 	nop
 10018110:	e037883a 	mov	sp,fp
 10018114:	df000017 	ldw	fp,0(sp)
@@ -27057,24 +26442,16 @@ static ALT_INLINE alt_irq_context ALT_ALWAYS_INLINE
 10018390:	f800283a 	ret
 
 10018394 <alt_get_errno>:
-#undef errno
-
-extern int errno;
-
-static ALT_INLINE int* alt_get_errno(void)
-{
 10018394:	defffe04 	addi	sp,sp,-8
 10018398:	dfc00115 	stw	ra,4(sp)
 1001839c:	df000015 	stw	fp,0(sp)
 100183a0:	d839883a 	mov	fp,sp
-  return ((alt_errno) ? alt_errno() : &errno);
 100183a4:	d0a00e17 	ldw	r2,-32712(gp)
 100183a8:	10000326 	beq	r2,zero,100183b8 <alt_get_errno+0x24>
 100183ac:	d0a00e17 	ldw	r2,-32712(gp)
 100183b0:	103ee83a 	callr	r2
 100183b4:	00000106 	br	100183bc <alt_get_errno+0x28>
 100183b8:	d0a86804 	addi	r2,gp,-24160
-}
 100183bc:	e037883a 	mov	sp,fp
 100183c0:	dfc00117 	ldw	ra,4(sp)
 100183c4:	df000017 	ldw	fp,0(sp)
@@ -27082,68 +26459,31 @@ static ALT_INLINE int* alt_get_errno(void)
 100183cc:	f800283a 	ret
 
 100183d0 <times>:
- *
- * ALT_TIMES is mapped onto the times() system call in alt_syscall.h
- */
- 
-clock_t ALT_TIMES (struct tms *buf)
-{
 100183d0:	defffc04 	addi	sp,sp,-16
 100183d4:	dfc00315 	stw	ra,12(sp)
 100183d8:	df000215 	stw	fp,8(sp)
 100183dc:	df000204 	addi	fp,sp,8
 100183e0:	e13fff15 	stw	r4,-4(fp)
- * alt_nticks() returns the elapsed number of system clock ticks since reset.
- */
-
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_nticks (void)
-{
-  return _alt_nticks;
 100183e4:	d0a86e17 	ldw	r2,-24136(gp)
-  clock_t ticks = alt_nticks(); 
 100183e8:	e0bffe15 	stw	r2,-8(fp)
- * Obtain the system clock rate in ticks/s. 
- */
-
-static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_ticks_per_second (void)
-{
-  return _alt_tick_rate;
 100183ec:	d0a86d17 	ldw	r2,-24140(gp)
-
-  /* If there is no system clock present, generate an error */
-
-  if (!alt_ticks_per_second())
 100183f0:	1000061e 	bne	r2,zero,1001840c <times+0x3c>
-  {
-    ALT_ERRNO = ENOSYS;
 100183f4:	00183940 	call	10018394 <alt_get_errno>
 100183f8:	1007883a 	mov	r3,r2
 100183fc:	00801604 	movi	r2,88
 10018400:	18800015 	stw	r2,0(r3)
-    return 0;
 10018404:	0005883a 	mov	r2,zero
 10018408:	00000a06 	br	10018434 <times+0x64>
-  }
-
-  /* Otherwise return the elapsed time */
-
-  buf->tms_utime  = 0;
 1001840c:	e0bfff17 	ldw	r2,-4(fp)
 10018410:	10000015 	stw	zero,0(r2)
-  buf->tms_stime  = ticks;
 10018414:	e0bfff17 	ldw	r2,-4(fp)
 10018418:	e0fffe17 	ldw	r3,-8(fp)
 1001841c:	10c00115 	stw	r3,4(r2)
-  buf->tms_cutime = 0;
 10018420:	e0bfff17 	ldw	r2,-4(fp)
 10018424:	10000215 	stw	zero,8(r2)
-  buf->tms_cstime = 0;
 10018428:	e0bfff17 	ldw	r2,-4(fp)
 1001842c:	10000315 	stw	zero,12(r2)
-
-  return ticks;
 10018430:	e0bffe17 	ldw	r2,-8(fp)
-}
 10018434:	e037883a 	mov	sp,fp
 10018438:	dfc00117 	ldw	ra,4(sp)
 1001843c:	df000017 	ldw	fp,0(sp)
@@ -27568,6 +26908,12 @@ void altera_avalon_jtag_uart_init(altera_avalon_jtag_uart_state* sp,
   if (alt_alarm_start(&sp->alarm, alt_ticks_per_second(), 
 10018824:	e0bffd17 	ldw	r2,-12(fp)
 10018828:	10800204 	addi	r2,r2,8
+ * Obtain the system clock rate in ticks/s. 
+ */
+
+static ALT_INLINE alt_u32 ALT_ALWAYS_INLINE alt_ticks_per_second (void)
+{
+  return _alt_tick_rate;
 1001882c:	d0e86d17 	ldw	r3,-24140(gp)
 10018830:	e1fffd17 	ldw	r7,-12(fp)
 10018834:	018400b4 	movhi	r6,4098
@@ -28946,24 +28292,16 @@ void alt_dcache_flush_all (void)
 100192f4:	f800283a 	ret
 
 100192f8 <alt_get_errno>:
-#undef errno
-
-extern int errno;
-
-static ALT_INLINE int* alt_get_errno(void)
-{
 100192f8:	defffe04 	addi	sp,sp,-8
 100192fc:	dfc00115 	stw	ra,4(sp)
 10019300:	df000015 	stw	fp,0(sp)
 10019304:	d839883a 	mov	fp,sp
-  return ((alt_errno) ? alt_errno() : &errno);
 10019308:	d0a00e17 	ldw	r2,-32712(gp)
 1001930c:	10000326 	beq	r2,zero,1001931c <alt_get_errno+0x24>
 10019310:	d0a00e17 	ldw	r2,-32712(gp)
 10019314:	103ee83a 	callr	r2
 10019318:	00000106 	br	10019320 <alt_get_errno+0x28>
 1001931c:	d0a86804 	addi	r2,gp,-24160
-}
 10019320:	e037883a 	mov	sp,fp
 10019324:	dfc00117 	ldw	ra,4(sp)
 10019328:	df000017 	ldw	fp,0(sp)
@@ -28971,75 +28309,42 @@ static ALT_INLINE int* alt_get_errno(void)
 10019330:	f800283a 	ret
 
 10019334 <alt_dev_llist_insert>:
-/*
- *
- */
-
-int alt_dev_llist_insert (alt_dev_llist* dev, alt_llist* list)
-{
 10019334:	defffa04 	addi	sp,sp,-24
 10019338:	dfc00515 	stw	ra,20(sp)
 1001933c:	df000415 	stw	fp,16(sp)
 10019340:	df000404 	addi	fp,sp,16
 10019344:	e13ffe15 	stw	r4,-8(fp)
 10019348:	e17fff15 	stw	r5,-4(fp)
-  /*
-   * check that the device exists, and that it has a valid name.
-   */
-
-  if (!dev || !dev->name)
 1001934c:	e0bffe17 	ldw	r2,-8(fp)
 10019350:	10000326 	beq	r2,zero,10019360 <alt_dev_llist_insert+0x2c>
 10019354:	e0bffe17 	ldw	r2,-8(fp)
 10019358:	10800217 	ldw	r2,8(r2)
 1001935c:	1000061e 	bne	r2,zero,10019378 <alt_dev_llist_insert+0x44>
-  {
-    ALT_ERRNO = EINVAL;
 10019360:	00192f80 	call	100192f8 <alt_get_errno>
 10019364:	1007883a 	mov	r3,r2
 10019368:	00800584 	movi	r2,22
 1001936c:	18800015 	stw	r2,0(r3)
-    return -EINVAL;
 10019370:	00bffa84 	movi	r2,-22
 10019374:	00001306 	br	100193c4 <alt_dev_llist_insert+0x90>
-  
-  /*
-   * register the device.
-   */
-  
-  alt_llist_insert(list, &dev->llist);
 10019378:	e0bffe17 	ldw	r2,-8(fp)
 1001937c:	e0ffff17 	ldw	r3,-4(fp)
 10019380:	e0fffc15 	stw	r3,-16(fp)
 10019384:	e0bffd15 	stw	r2,-12(fp)
- */
-
-static ALT_INLINE void ALT_ALWAYS_INLINE alt_llist_insert(alt_llist* list, 
-                alt_llist* entry)
-{
-  entry->previous = list;
 10019388:	e0bffd17 	ldw	r2,-12(fp)
 1001938c:	e0fffc17 	ldw	r3,-16(fp)
 10019390:	10c00115 	stw	r3,4(r2)
-  entry->next     = list->next;
 10019394:	e0bffc17 	ldw	r2,-16(fp)
 10019398:	10c00017 	ldw	r3,0(r2)
 1001939c:	e0bffd17 	ldw	r2,-12(fp)
 100193a0:	10c00015 	stw	r3,0(r2)
-
-  list->next->previous = entry;
 100193a4:	e0bffc17 	ldw	r2,-16(fp)
 100193a8:	10800017 	ldw	r2,0(r2)
 100193ac:	e0fffd17 	ldw	r3,-12(fp)
 100193b0:	10c00115 	stw	r3,4(r2)
-  list->next           = entry;
 100193b4:	e0bffc17 	ldw	r2,-16(fp)
 100193b8:	e0fffd17 	ldw	r3,-12(fp)
 100193bc:	10c00015 	stw	r3,0(r2)
-
-  return 0;  
 100193c0:	0005883a 	mov	r2,zero
-}
 100193c4:	e037883a 	mov	sp,fp
 100193c8:	dfc00117 	ldw	ra,4(sp)
 100193cc:	df000017 	ldw	fp,0(sp)
@@ -29047,33 +28352,17 @@ static ALT_INLINE void ALT_ALWAYS_INLINE alt_llist_insert(alt_llist* list,
 100193d4:	f800283a 	ret
 
 100193d8 <_do_ctors>:
-/*
- * Run the C++ static constructors.
- */
-
-void _do_ctors(void)
-{
 100193d8:	defffd04 	addi	sp,sp,-12
 100193dc:	dfc00215 	stw	ra,8(sp)
 100193e0:	df000115 	stw	fp,4(sp)
 100193e4:	df000104 	addi	fp,sp,4
-  constructor* ctor;
-
-  for (ctor = &__CTOR_END__[-1]; ctor >= __CTOR_LIST__; ctor--)
 100193e8:	008400b4 	movhi	r2,4098
 100193ec:	10a8e304 	addi	r2,r2,-23668
 100193f0:	e0bfff15 	stw	r2,-4(fp)
 100193f4:	00000606 	br	10019410 <_do_ctors+0x38>
-        (*ctor) (); 
 100193f8:	e0bfff17 	ldw	r2,-4(fp)
 100193fc:	10800017 	ldw	r2,0(r2)
 10019400:	103ee83a 	callr	r2
-
-void _do_ctors(void)
-{
-  constructor* ctor;
-
-  for (ctor = &__CTOR_END__[-1]; ctor >= __CTOR_LIST__; ctor--)
 10019404:	e0bfff17 	ldw	r2,-4(fp)
 10019408:	10bfff04 	addi	r2,r2,-4
 1001940c:	e0bfff15 	stw	r2,-4(fp)
@@ -29081,8 +28370,6 @@ void _do_ctors(void)
 10019414:	008400b4 	movhi	r2,4098
 10019418:	10a8e404 	addi	r2,r2,-23664
 1001941c:	18bff62e 	bgeu	r3,r2,100193f8 <__alt_data_end+0xf80193f8>
-        (*ctor) (); 
-}
 10019420:	0001883a 	nop
 10019424:	e037883a 	mov	sp,fp
 10019428:	dfc00117 	ldw	ra,4(sp)
@@ -29091,33 +28378,17 @@ void _do_ctors(void)
 10019434:	f800283a 	ret
 
 10019438 <_do_dtors>:
-/*
- * Run the C++ static destructors.
- */
-
-void _do_dtors(void)
-{
 10019438:	defffd04 	addi	sp,sp,-12
 1001943c:	dfc00215 	stw	ra,8(sp)
 10019440:	df000115 	stw	fp,4(sp)
 10019444:	df000104 	addi	fp,sp,4
-  destructor* dtor;
-
-  for (dtor = &__DTOR_END__[-1]; dtor >= __DTOR_LIST__; dtor--)
 10019448:	008400b4 	movhi	r2,4098
 1001944c:	10a8e304 	addi	r2,r2,-23668
 10019450:	e0bfff15 	stw	r2,-4(fp)
 10019454:	00000606 	br	10019470 <_do_dtors+0x38>
-        (*dtor) (); 
 10019458:	e0bfff17 	ldw	r2,-4(fp)
 1001945c:	10800017 	ldw	r2,0(r2)
 10019460:	103ee83a 	callr	r2
-
-void _do_dtors(void)
-{
-  destructor* dtor;
-
-  for (dtor = &__DTOR_END__[-1]; dtor >= __DTOR_LIST__; dtor--)
 10019464:	e0bfff17 	ldw	r2,-4(fp)
 10019468:	10bfff04 	addi	r2,r2,-4
 1001946c:	e0bfff15 	stw	r2,-4(fp)
@@ -29125,8 +28396,6 @@ void _do_dtors(void)
 10019474:	008400b4 	movhi	r2,4098
 10019478:	10a8e404 	addi	r2,r2,-23664
 1001947c:	18bff62e 	bgeu	r3,r2,10019458 <__alt_data_end+0xf8019458>
-        (*dtor) (); 
-}
 10019480:	0001883a 	nop
 10019484:	e037883a 	mov	sp,fp
 10019488:	dfc00117 	ldw	ra,4(sp)

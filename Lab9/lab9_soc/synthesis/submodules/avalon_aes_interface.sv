@@ -70,19 +70,17 @@ AES AES_inst(.CLK(CLK),
 				 .AES_DONE(done),
 				 .AES_KEY({Reg_Array[0][31:0],Reg_Array[1][31:0],Reg_Array[2][31:0],Reg_Array[3][31:0]}),
 				 .AES_MSG_ENC({Reg_Array[4][31:0],Reg_Array[5][31:0],Reg_Array[6][31:0],Reg_Array[7][31:0]}),
-				 .AES_MSG_DEC({Reg_temp[0][31:0],Reg_temp[1][31:0],Reg_temp[2][31:0],Reg_temp[3][31:0]}));
+				 .AES_MSG_DEC({Reg_temp[0],Reg_temp[1],Reg_temp[2],Reg_temp[3]}));
 
 	
-assign DATA_EXPORT = {Reg_Array[4][31:16], Reg_Array[7][15:0]};
+assign EXPORT_DATA = {Reg_Array[4][31:16], Reg_Array[7][15:0]};
 
 
 
 always_ff @ (posedge CLK)
 begin
-	if (AVL_CS)
-	begin
-		if (RESET)
-			begin
+	if (RESET)
+		begin
 				// clear all registers
 				Reg_Array[0] <= 32'b0;
 				Reg_Array[1] <= 32'b0;
@@ -100,21 +98,12 @@ begin
 				Reg_Array[13] <= 32'b0;
 				Reg_Array[14] <= 32'b0;
 				Reg_Array[15] <= 32'b0;
-				if (done)
-					begin
-						Reg_Array[8][31:0] <=  Reg_temp[0];
-						Reg_Array[9][31:0] <=  Reg_temp[1];
-						Reg_Array[10][31:0] <=  Reg_temp[2];
-						Reg_Array[11][31:0] <=  Reg_temp[3];
-						Reg_Array[15][0] <= done;
-							
-					end
-			end
-		else if (AVL_WRITE)
+		end
+	if (AVL_WRITE && AVL_CS)
 			begin
 				case (AVL_BYTE_EN)
-					4'b1111:
-						Reg_Array[AVL_ADDR]<= AVL_WRITEDATA[31:0];
+//					4'b1111:
+//						Reg_Array[AVL_ADDR]<= AVL_WRITEDATA[31:0];
 					4'b1100:
 						Reg_Array[AVL_ADDR]<= {AVL_WRITEDATA[31:16],Reg_Array[AVL_ADDR][15:0]};
 					4'b0011:
@@ -124,41 +113,43 @@ begin
 					4'b0100:
 						Reg_Array[AVL_ADDR]<= {Reg_Array[AVL_ADDR][31:24],AVL_WRITEDATA[23:16],Reg_Array[AVL_ADDR][15:0]};
 					4'b0010:
-						Reg_Array[AVL_ADDR]<= {Reg_Array[AVL_ADDR][31:16],AVL_WRITEDATA[15:7],Reg_Array[AVL_ADDR][6:0]};
+						Reg_Array[AVL_ADDR]<= {Reg_Array[AVL_ADDR][31:16],AVL_WRITEDATA[15:8],Reg_Array[AVL_ADDR][7:0]};
 					4'b0001:
 						Reg_Array[AVL_ADDR]<= {Reg_Array[AVL_ADDR][31:8],AVL_WRITEDATA[7:0]};	
 					default: 
 						// do nothing
-						Reg_Array[AVL_ADDR] <= Reg_Array[AVL_ADDR];
+						Reg_Array[AVL_ADDR] <= AVL_WRITEDATA[31:0];
 				endcase
-//				if (done)
-//					begin
-//						Reg_Array[8][31:0] <=  Reg_temp[0];
-//						Reg_Array[9][31:0] <=  Reg_temp[1];
-//						Reg_Array[10][31:0] <=  Reg_temp[2];
-//						Reg_Array[11][31:0] <=  Reg_temp[3];
-//						Reg_Array[15][0] <= done;
-//							
-//					end
+			end
+		if (done)
+			begin
+				Reg_Array[8][31:0] <=  Reg_temp[0];
+				Reg_Array[9][31:0] <=  Reg_temp[1];
+				Reg_Array[10][31:0] <=  Reg_temp[2];
+				Reg_Array[11][31:0] <=  Reg_temp[3];
+				Reg_Array[15][0] <= done;	
 			end
 			
-		else if (AVL_READ)
-			begin 
-			// required that readdata should have the value of the addressed register on the same cycle
-				AVL_READDATA <= Reg_Array[AVL_ADDR];		
+//		else if (AVL_READ)
+//			begin 
+//			// required that readdata should have the value of the addressed register on the same cycle
+//				AVL_READDATA <= Reg_Array[AVL_ADDR];		
+//			end
+end
+		
+
+always_comb
+	begin
+		if(AVL_READ && AVL_CS)
+			begin
+				AVL_READDATA = Reg_Array[AVL_ADDR];
+			end
+		else
+			begin
+				AVL_READDATA = 32'hX;
 			end
 	end
-		
-//	if (done)
-//	begin
-//		Reg_Array[8][31:0] <=  Reg_temp[0];
-//		Reg_Array[9][31:0] <=  Reg_temp[1];
-//		Reg_Array[10][31:0] <=  Reg_temp[2];
-//		Reg_Array[11][31:0] <=  Reg_temp[3];
-//		Reg_Array[15][0] <= done;
-//			
-//	end
-		
+
 		
 		// Not sure if need to consider the following two else cause to avoid latch
 //		else
@@ -167,6 +158,6 @@ begin
 //	else
 		// if not this chip, do nothing
 //		Reg_Array <= Reg_Array;
-end
+
 
 endmodule
