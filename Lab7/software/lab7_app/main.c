@@ -26,8 +26,8 @@ int main()
 	volatile unsigned int *LED_PIO = (unsigned int*)0x70;
 
 	*LED_PIO = 0;
-	int Reset = 1;
-	int Accumulate = 1;
+	int Reset = 1;  // here Reset=1 means the reset is not high
+	int Accumulate = 1; // here Accumulate = 1 means the Accumualate is not high
 	volatile unsigned int count = 0;
 
 	while (1)
